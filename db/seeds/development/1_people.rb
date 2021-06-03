@@ -19,13 +19,14 @@ class SvsePersonSeeder < PersonSeeder
 
 end
 
-puzzlers = ['Pascal Zumkehr',
-            'Pierre Fritsch',
-            'Andreas Maierhofer',
-            'Mathis Hofer',
+puzzlers = ['Andreas Maierhofer',
             'Andre Kunz',
-            'Pascal Simon',
-            'Roland Studer']
+            'Nils Rauch',
+            'Carlo Beltrame',
+            'Tobias Hinderling',
+            'Olivier Brian',
+            'Pascal Simon']
+            
 
 devs = {'Customer Name' => 'customer@email.com'}
 puzzlers.each do |puz|
