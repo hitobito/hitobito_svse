@@ -5,16 +5,17 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
+class Group::Sportart < ::Group
 
-module Svse::Group
-  extend ActiveSupport::Concern
+  ### ROLES
 
-  included do
-    # Define additional used attributes
-    # self.used_attributes += [:website, :bank_account, :description]
-    # self.superior_attributes = [:bank_account]
-
-    root_types Group::Svse
+  class Ombudsperson < ::Role
+    self.permissions = [:group_full]
   end
+
+  class Mitglied < ::Role; end
+
+  roles Ombudsperson,
+        Mitglied
 
 end

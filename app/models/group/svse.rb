@@ -5,21 +5,20 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
-
 class Group::Svse < ::Group
 
   self.layer = true
 
-  children Group::RessortMitarbeitende
-           Group::TechnischeKomission
-           Group::Ehrenmitglieder
-           Group::ExterneKontakte
+  children Group::RessortMitarbeitende,
+           Group::TechnischeKomission,
+           Group::Ehrenmitglieder,
+           Group::ExterneKontakte,
            Group::Sektion
 
   self.default_children = [
-    Group::RessortMitarbeitende
-    Group::TechnischeKomission
-    Group::Ehrenmitglieder
+    Group::RessortMitarbeitende,
+    Group::TechnischeKomission,
+    Group::Ehrenmitglieder,
     Group::ExterneKontakte
   ]
 

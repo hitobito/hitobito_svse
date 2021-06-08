@@ -6,4 +6,4 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-Group::Root.seed_once(:parent_id, name: 'Hauptgruppe')
+Group::Svse.seed_once(:parent_id, name: 'SVSE')

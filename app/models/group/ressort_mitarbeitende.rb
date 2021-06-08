@@ -5,32 +5,12 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
-
 class Group::RessortMitarbeitende < ::Group
-
-  children Group::RessortMitarbeitende
-           Group::TechnischeKomission
-           Group::Ehrenmitglieder
-           Group::ExterneKontakte
-
-  self.default_children = [
-    Group::RessortMitarbeitende
-    Group::TechnischeKomission
-    Group::Ehrenmitglieder
-    Group::ExterneKontakte
-  ]
 
   ### ROLES
 
-  class Geschaeftsleitung < ::Role
-    self.permissions = [:layer_and_below_full]
-  end
+  class Mitglied < ::Role; end
 
-  class Kassier < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
-  end
-
-  roles Geschaeftsleitung,
-        Kassier
+  roles Mitglied
 
 end

@@ -5,16 +5,14 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
+class Group::TechnischeKomission < ::Group
 
-module Svse::Group
-  extend ActiveSupport::Concern
+  ### ROLES
 
-  included do
-    # Define additional used attributes
-    # self.used_attributes += [:website, :bank_account, :description]
-    # self.superior_attributes = [:bank_account]
-
-    root_types Group::Svse
+  class Mitglied < ::Role
+    self.permissions = [:layer_and_below_full]
   end
+
+  roles Mitglied
 
 end

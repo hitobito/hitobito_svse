@@ -5,16 +5,12 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
+class Group::ExterneKontakte < ::Group
 
-module Svse::Group
-  extend ActiveSupport::Concern
+  ### ROLES
 
-  included do
-    # Define additional used attributes
-    # self.used_attributes += [:website, :bank_account, :description]
-    # self.superior_attributes = [:bank_account]
+  class Kontakt < ::Role; end
 
-    root_types Group::Svse
-  end
+  roles Kontakt
 
 end
