@@ -10,14 +10,22 @@ require Rails.root.join('db/seeds/support/group_seeder')
 seeder = GroupSeeder.new
 
 root = Group.roots.first
-srand(42)
 
-if root.address.blank?
-  root.update!(seeder.group_attributes)
-  root.default_children.each do |child_class|
-    child_class.first.update!(seeder.group_attributes)
-  end
-end
+Group::RessortMitarbeitende.seed_once(:name, :parent_id,
+                                      parent_id: root.id,
+                                      name: 'Ressortmitarbeitende')
+
+Group::TechnischeKomission.seed_once(:name, :parent_id,
+                                     parent_id: root.id,
+                                     name: 'Technische Komission TK')
+
+Group::Ehrenmitglieder.seed_once(:name, :parent_id,
+                                 parent_id: root.id,
+                                 name: 'Ehrenmitglieder')
+
+Group::ExterneKontakte.seed_once(:name, :parent_id,
+                                 parent_id: root.id,
+                                 name: 'Externe Kontakte')
 
 sektionen = Group::Sektion
             .seed(:name, :parent_id,
@@ -38,6 +46,11 @@ sektionen = Group::Sektion
 
 sektionen.each do |s|
   seeder.seed_social_accounts(s)
+  %w(Bergsteigen Mountainbike Badminton Fussball Golf).each do |sa|
+    Group::Sportart.seed_once(:name, :parent_id,
+                              parent_id: s.id,
+                              name: sa)
+  end
 end
 
 Group.rebuild!

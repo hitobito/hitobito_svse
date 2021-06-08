@@ -10,16 +10,55 @@ de:
 
       ### GROUPS
 
-      group/root:
-        one: Hauptgruppe
+      group/svse:
+        one: SVSE
         other: Hauptgruppen
 
+      group/sektion:
+        one: Sektion
+        other: Sektionen
 
       ### ROLES
 
-      group/root/leader:
-        one: Leitung
-        description: Leitungspersonen verwalten die Applikation.
-      group/root/member:
+      group/svse/geschaeftsleitung:
+        one: Geschäftsleitung
+        description: Geschäftsleitung
+      group/svse/kassier:
+        one: Kassier
+        description: Kassier
+      group/technische_komission/mitglied:
         one: Mitglied
-        description: Mitglieder sind alle anderen.
+        description: Mitglied der TK
+      group/ehrenmitglieder/mitglied:
+        one: Mitglied
+        description: Ehrenmitglied
+      group/externe_kontakte/kontakt:
+        one: Kontakt
+        description: Externer Kontakt / Sponsor
+      group/ressort_mitarbeitende/mitglied:
+        one: Mitglied
+        description: Mitglied Ressortmitarbeitende
+      group/sektion/mitglied:
+        one: Mitglied
+        description: Mitglied
+      group/sektion/nicht_mitglied:
+        one: Nichtmitglied
+        description: NichtMitglied
+      group/sektion/read_only:
+        one: Read Only
+        description: Read Only
+      group/sektion/kassier:
+        one: Kassier
+        description: Kassier
+      group/sektion/mutationsfuehrer:
+        one: Mutationsführer
+        description: Mutationsführer
+      group/sektion/ehrenmitglied:
+        one: Ehrenmitglied
+        description: Ehrenmitglied
+      group/sportart/ombuds_person:
+        one: Ombudsfrau/-mann
+        description: Ombudsfrau/-mann
+      group/sportart/mitglied:
+        one: Mitglied
+        description: Mitglied

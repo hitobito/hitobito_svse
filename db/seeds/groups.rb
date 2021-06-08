@@ -6,4 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-Group::Svse.seed_once(:parent_id, name: 'SVSE')
+Group::Svse.seed_once(:parent_id,
+                      name: 'SVSE',
+                      short_name: 'SVSE')

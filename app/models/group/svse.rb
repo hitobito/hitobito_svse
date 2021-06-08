@@ -15,13 +15,6 @@ class Group::Svse < ::Group
            Group::ExterneKontakte,
            Group::Sektion
 
-  self.default_children = [
-    Group::RessortMitarbeitende,
-    Group::TechnischeKomission,
-    Group::Ehrenmitglieder,
-    Group::ExterneKontakte
-  ]
-
   ### ROLES
 
   class Geschaeftsleitung < ::Role
