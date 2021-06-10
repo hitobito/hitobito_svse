@@ -19,7 +19,7 @@ class Group::Sektion < ::Group
   end
 
   class Kassier < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:finance, :layer_and_below_full]
   end
 
   class Mitglied < ::Role; end

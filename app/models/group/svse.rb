@@ -22,7 +22,7 @@ class Group::Svse < ::Group
   end
 
   class Kassier < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+    self.permissions = [:finance, :layer_and_below_full, :contact_data]
   end
 
   roles Geschaeftsleitung,
