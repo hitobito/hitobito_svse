@@ -4,16 +4,113 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-root:
+svse:
   parent:
   lft: 1
-  rgt: 2
-  name: Hauptgruppe
-  type: Group::Root
-  email: root@example.net
+  rgt: 20
+  name: SVSE
+  type: Group::Svse
+  email: svse@svse.example.com
   address: Ophovener Str. 79a
   zip_code: 2843
   town: Neu Carlscheid
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
 
-# TODO add more groups
+ehrenmitglieder:
+  parent: svse
+  lft: 4
+  rgt: 5
+  name: Ehrenmitglieder
+  type: Group::Ehrenmitglieder
+  email: ehrenmitglieder@svse.example.com
+  address: Schellingstr. 8
+  zip_code: 4242
+  town: Domianburg
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
+
+externe_kontakte:
+  parent: svse
+  lft: 12
+  rgt: 13
+  name: Externe Kontakte
+  type: Group::ExterneKontakte
+  email: extern@svse.example.com
+  address: Hauptstrasse 42
+  zip_code: 2000
+  town: Entenhausen
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
+
+ressort_mitarbeitende:
+  parent: svse
+  lft: 14
+  rgt: 15
+  name: Ressortmitarbeitende
+  type: Group::RessortMitarbeitende
+  email: ressort@svse.example.com
+  address: Bergstrasse 4677
+  zip_code: 7993
+  town: Davos Platz
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
+
+technische_komission:
+  parent: svse
+  lft: 2
+  rgt: 3
+  name: Technische Komission
+  type: Group::TechnischeKomission
+  email: tk@svse.example.com
+  address: Teslastrasse 44
+  zip_code: 8000
+  town: Züri
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
+
+esv_luzern:
+  parent: svse
+  lft: 6
+  rgt: 11
+  name: ESV Luzern
+  type: Group::Sektion
+  email: lu@svse.example.com
+  address: Kappelbrücke 42
+  zip_code: 6000
+  town: Luzern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_luzern) %>
+
+esv_luzern_bergsteigen:
+  parent: esv_luzern
+  lft: 9
+  rgt: 10
+  name: Bergsteigen
+  type: Group::Sportart
+  email: bluemlisalp@svse.example.com
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_luzern) %>
+
+esv_luzern_mountainbike:
+  parent: esv_luzern
+  lft: 7
+  rgt: 8
+  name: Mountainbike
+  type: Group::Sportart
+  email: badmin@svse.example.com
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_luzern) %>
+
+esv_olten:
+  parent: svse
+  lft: 16
+  rgt: 19
+  name: ESV Olten
+  type: Group::Sektion
+  email: olten@svse.example.com
+  address: Hauensteinstrasse 442
+  zip_code: 4111
+  town: Oltenhausen
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_olten) %>
+
+esv_olten_mountainbike:
+  parent: esv_olten
+  lft: 17
+  rgt: 18
+  name: Mountainbike
+  type: Group::Sportart
+  email: oltenbiker@svse.example.com
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_olten) %>

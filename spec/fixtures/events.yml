@@ -5,15 +5,12 @@
 
 
 top_event:
-  name: Top Event
-  groups: root
+  groups: svse
 
 top_course:
-  name: Top Course
-  groups: root
+  groups: svse
   type: Event::Course
   kind: dummy
-  priorization: true
+  priorization: false
   requires_approval: true
   external_applications: true
-

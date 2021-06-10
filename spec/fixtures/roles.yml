@@ -4,19 +4,17 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-admin:
-  person: admin
-  group: root
-  type: Group::Root::Leader
+geschaeftsleitung:
+  person: geschaeftsleitung
+  group: svse
+  type: Group::Svse::Geschaeftsleitung
 
-# TODO use group and type of the main base leader
-leader:
-  person: leader
-  group: root
-  type: Group::Root::Leader
+mutationsfuehrer:
+  person: mutationsfuehrer
+  group: esv_luzern
+  type: Group::Sektion::Mutationsfuehrer
 
-# TODO use group and type of the main base member
 member:
-  person: member
-  group: root
-  type: Group::Root::Member
+  person: biker
+  group: esv_olten_mountainbike
+  type: Group::Sportart::Mitglied

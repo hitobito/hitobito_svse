@@ -4,23 +4,23 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-admin:
-  first_name: Chief
-  last_name: Admin
-  email: admin@hitobito.example.comt
+geschaeftsleiter:
+  first_name: Leiter
+  last_name: Chefes
+  email: chefes@svse.example.com
   gender: m
   contact_data_visible: true
-  primary_group: root
+  primary_group: svse
 
-leader:
-  first_name: A
-  last_name: Leader
-  email: a.leader@hitobito.example.com
+mutationsfuehrer:
+  first_name: Muti
+  last_name: Mats
+  email: mats@svse.example.com
   contact_data_visible: true
-  primary_group: root
+  primary_group: esv_luzern
 
-member:
-  first_name: My
-  last_name: Member
-  email: member0@hitobito.example.com
-  primary_group: root
+biker:
+  first_name: Danny
+  last_name: MacAskill
+  email: skills@svse.example.com
+  primary_group: esv_luzern_mountainbike

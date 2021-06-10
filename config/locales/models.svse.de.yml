@@ -18,6 +18,26 @@ de:
         one: Sektion
         other: Sektionen
 
+      group/ressort_mitarbeitende:
+        one: Ressortmitarbeitende
+        other: Ressortmitarbeitende
+
+      group/technische_komission:
+        one: Technische Komission
+        other: Technische Komissionen
+
+      group/externe_kontakte:
+        one: Externe Kontakte
+        other: Externe Kontakte
+
+      group/sportart:
+        one: Sportart
+        other: Sportarten
+
+      group/ehrenmitglieder:
+        one: Ehrenmitglieder
+        other: Ehrenmitglieder
+
       ### ROLES
 
       group/svse/geschaeftsleitung:
