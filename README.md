@@ -1,8 +1,9 @@
-# hitobito_skv
-A hitobito wagon defining the organization hierarchy and additional features for SKV
-Basis Setup 
+# hitobito_svse
+
+A hitobito wagon defining the organization hierarchy and additional features for SVSE
 
 # Rollen, Berechtigungen
+
 Dachverband
   - Geschäftsleitung (Alle Mitglieder der Geschäftsleitung haben dieselben Rechte)
       - Mitglied: [:group_and_below_full]
