@@ -18,7 +18,7 @@ class Group::Svse < ::Group
   ### ROLES
 
   class Geschaeftsleitung < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:layer_and_below_full, :admin]
   end
 
   class Kassier < ::Role
