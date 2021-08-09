@@ -82,3 +82,24 @@ de:
       group/sportart/mitglied:
         one: Mitglied
         description: Mitglied
+
+    attributes:
+      person:
+        created_at: Eintrittsdatum
+        died_at: Verstorben am
+        iban: IBAN
+        occupation: Beruf
+        recruited_at: Geworben am
+        recruited_by: Geworben durch
+        recruited_by_id: Geworben durch
+        states:
+          active: Aktiv
+          passive: Passiv
+          resigned: Ausgetreten
+          deceased: Verstorben
+        state: Status
+        state_label: Status
+        title: Titel
+
+  attributes:
+    created_info: Eintrittsdatum
