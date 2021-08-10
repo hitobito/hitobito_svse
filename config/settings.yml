@@ -22,3 +22,6 @@ application:
 # Initially, a password reset token may be mailed from the application
 # to this address to set a password.
 root_email: hitobito-svse@puzzle.ch
+
+messages:
+  enable_writing: true
