@@ -21,8 +21,19 @@ module HitobitoSvse
     ]
 
     config.to_prepare do
-      # extend application classes here
+      ### models
       Group.include Svse::Group
+      Person.include Svse::Person
+      TableDisplay.prepend Svse::TableDisplay
+
+      ### controllers
+      PeopleController.permitted_attrs += [:title, :iban, :occupation, :recruited_by_id,
+                                           :recruited_at, :died_at, :state]
+
+      ### domain classes
+      TableDisplay::People.prepend Svse::TableDisplay::People
+      Export::Tabular::People::PeopleFull.prepend Svse::Export::Tabular::People::PeopleFull
+      Export::Tabular::People::PersonRow.include Svse::Export::Tabular::People::PersonRow
     end
 
     initializer 'svse.add_settings' do |_app|
