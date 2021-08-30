@@ -22,16 +22,42 @@ class Group::Sektion < ::Group
     self.permissions = [:finance, :layer_and_below_full]
   end
 
+  class Ehrenmitglied < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class LoginLernende < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Freimitglied < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Junior < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ObmannSportart < ::Role
+    self.permissions = [:group_full]
+  end
+
+  class Praesident < ::Role; end
   class Mitglied < ::Role; end
   class NichtMitglied < ::Role; end
   class ReadOnly < ::Role; end
-  class Ehrenmitglied < ::Role; end
 
-  roles Mutationsfuehrer,
+
+  roles Praesident,
+        ObmannSportart,
+        Mutationsfuehrer,
         Kassier,
         Mitglied,
         NichtMitglied,
         ReadOnly,
-        Ehrenmitglied
+        Ehrenmitglied,
+        LoginLernende,
+        Freimitglied,
+        Junior
 
 end

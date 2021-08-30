@@ -25,7 +25,22 @@ class Group::Svse < ::Group
     self.permissions = [:finance, :layer_and_below_full, :contact_data]
   end
 
-  roles Geschaeftsleitung,
-        Kassier
+  class Praesident < ::Role; end
+  class Mutationsfuehrer < ::Role; end
+  class Sponsor < ::Role; end
+  class LoginLernende < ::Role; end
+  class Freimitglied < ::Role; end
+  class Ehrenmitglied < ::Role; end
+  class Junior < ::Role; end
+
+  roles Praesident,
+        Geschaeftsleitung,
+        Mutationsfuehrer,
+        Kassier,
+        Sponsor,
+        LoginLernende,
+        Freimitglied,
+        Ehrenmitglied,
+        Junior
 
 end
