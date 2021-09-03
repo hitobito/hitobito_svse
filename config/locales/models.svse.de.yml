@@ -57,7 +57,6 @@ de:
         description: Sponsor
       group/svse/login_lernende:
         one: Login Lernende
-        description: Login für Lernende
       group/svse/freimitglied:
         one: Freimitglied
         description: Freimitglied
@@ -82,9 +81,6 @@ de:
       group/sektion/mitglied:
         one: Mitglied
         description: Mitglied
-      group/sektion/nicht_mitglied:
-        one: Nichtmitglied
-        description: NichtMitglied
       group/sektion/read_only:
         one: Read Only
         description: Read Only
@@ -102,16 +98,12 @@ de:
         description: Freimitglied
       group/sektion/login_lernende:
         one: Login Lernende
-        description: Login für Lernende
       group/sektion/junior:
         one: Junior
         description: Junior
       group/sektion/obmann_sportart:
         one: Obmann Sportart
         description: Obmann einer Sportart
-      group/sektion/ehrenmitglied:
-        one: Ehrenmitglied
-        description: Ehrenmitglied
       group/sektion/praesident:
         one: Präsident
         description: Präsident

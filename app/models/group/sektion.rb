@@ -42,9 +42,11 @@ class Group::Sektion < ::Group
     self.permissions = [:group_full]
   end
 
-  class Praesident < ::Role; end
+  class Praesident < ::Role
+    self.permissions = [:group_full]
+  end
+
   class Mitglied < ::Role; end
-  class NichtMitglied < ::Role; end
   class ReadOnly < ::Role; end
 
 
@@ -53,7 +55,6 @@ class Group::Sektion < ::Group
         Mutationsfuehrer,
         Kassier,
         Mitglied,
-        NichtMitglied,
         ReadOnly,
         Ehrenmitglied,
         LoginLernende,
