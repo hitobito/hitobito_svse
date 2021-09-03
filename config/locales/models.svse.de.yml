@@ -46,6 +46,26 @@ de:
       group/svse/kassier:
         one: Kassier
         description: Kassier
+      group/svse/praesident:
+        one: Präsident
+        description: Präsident
+      group/svse/mutationsfuehrer:
+        one: Mutationsführer
+        description: Mutationsführer
+      group/svse/sponsor:
+        one: Sponsor
+        description: Sponsor
+      group/svse/login_lernende:
+        one: Login Lernende
+      group/svse/freimitglied:
+        one: Freimitglied
+        description: Freimitglied
+      group/svse/ehrenmitglied:
+        one: Ehrenmitglied
+        description: Ehrenmitglied
+      group/svse/junior:
+        one: Junior
+        description: Junior
       group/technische_komission/mitglied:
         one: Mitglied
         description: Mitglied der TK
@@ -61,9 +81,6 @@ de:
       group/sektion/mitglied:
         one: Mitglied
         description: Mitglied
-      group/sektion/nicht_mitglied:
-        one: Nichtmitglied
-        description: NichtMitglied
       group/sektion/read_only:
         one: Read Only
         description: Read Only
@@ -76,6 +93,20 @@ de:
       group/sektion/ehrenmitglied:
         one: Ehrenmitglied
         description: Ehrenmitglied
+      group/sektion/freimitglied:
+        one: Freimitglied
+        description: Freimitglied
+      group/sektion/login_lernende:
+        one: Login Lernende
+      group/sektion/junior:
+        one: Junior
+        description: Junior
+      group/sektion/obmann_sportart:
+        one: Obmann Sportart
+        description: Obmann einer Sportart
+      group/sektion/praesident:
+        one: Präsident
+        description: Präsident
       group/sportart/ombuds_person:
         one: Ombudsfrau/-mann
         description: Ombudsfrau/-mann

@@ -61,9 +61,6 @@ de:
       group/sektion/mitglied:
         one: Mitglied
         description: Mitglied
-      group/sektion/nicht_mitglied:
-        one: Nichtmitglied
-        description: NichtMitglied
       group/sektion/read_only:
         one: Read Only
         description: Read Only

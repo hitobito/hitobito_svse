@@ -4,29 +4,38 @@ A hitobito wagon defining the organization hierarchy and additional features for
 
 # Rollen, Berechtigungen
 
-Dachverband
-  - Geschäftsleitung (Alle Mitglieder der Geschäftsleitung haben dieselben Rechte)
-      - Mitglied: [:group_and_below_full]
-      - Kassier: 
-  - Ressortmitarbeitende:
-      - Mitglied: []
-  - TK (Technische Komission) (1 Leiter Pro Sportart)
-      - Mitglied: [:group_and_below_full]
-  - Ehrenmitglieder (aktuell kein Login, in Zukunft gerne)
-      - Mitglied: []
-  - Externe Kontakte / Sponsoren
-      - Kontakt: []
-  - Sektion
-      - Mutationsführer [:group_and_below_full]
-      - Mitglied: []
-      - NichtMitglied: []
-      - ReadOnly: [:group_read]
-      - Kassier: [:group_and_below_full]
-         -> Sportart als Bezeichnung auf der Rolle abgebildet als Gruppe
-      - NichtMitglied []
-      - Eherenmitglied []
-      - Sportart Gruppe:
-          - Ombutsmann/Frau: [:group_full]
-          - Mitglied: []
-      - Externe Kontakte / Sponsoren
-          - Kontakt: []
+* SVSE
+  * SVSE
+    * Präsident: [:group_full]
+    * Geschäftsleitung: [:layer_and_below_full, :admin]
+    * Mutationsführer: [:layer_and_below_full]
+    * Kassier: [:finance, :layer_and_below_full, :contact_data]
+    * Sponsor: []
+    * Login Lernende: [:group_read]
+    * Freimitglied: [:group_read]
+    * Ehrenmitglied: []
+    * Junior: [:group_read]
+  * Ressortmitarbeitende
+    * Mitglied: []
+  * Technische Komission
+    * Mitglied: [:layer_and_below_full]
+  * Ehrenmitglieder
+    * Mitglied: []
+* Sektion
+  * Sektion
+    * Präsident: [:group_full]
+    * Obmann Sportart: [:group_full]
+    * Mutationsführer: [:layer_and_below_full]
+    * Kassier: [:finance, :layer_and_below_full]
+    * Mitglied: []
+    * Read Only: []
+    * Ehrenmitglied: [:group_read]
+    * Login Lernende: [:group_read]
+    * Freimitglied: [:group_read]
+    * Junior: [:group_read]
+  * Sportart
+    * Ombudsfrau/-mann: [:group_full]
+    * Mitglied: []
+* Global
+  * Externe Kontakte
+    * Kontakt: []
