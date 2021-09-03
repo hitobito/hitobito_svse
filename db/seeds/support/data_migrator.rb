@@ -116,6 +116,10 @@ class DataMigrator
                      address: row[:address])
     end
 
+    def retrieve_boolean(value)
+      value == "t"
+    end
+
     private
 
     def section_from_row(row)
