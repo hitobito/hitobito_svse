@@ -16,6 +16,9 @@ namespace :import do
 
     raw_recruited_people = []
 
+    # Get tag id for non_member tagging
+    non_member_tag = ActsAsTaggableOn::Tag.find_or_create_by(name: 'Nicht Mitglied im Dachverband')
+
     CSV.parse(person_csv.read, headers: true, header_converters: :symbol).each do |person_row|
       person_hash = person_row.to_h.except(:recruited_by_first_name,
                                            :recruited_by_last_name,
@@ -25,19 +28,29 @@ namespace :import do
       person_hash[:country] = DataMigrator.refactor_country(person_hash[:country])
       person_hash[:occupation] = DataMigrator.check_occupation(person_hash[:occupation])
       person_hash[:created_at] = person_hash.delete(:joined_at)
+      is_member = DataMigrator.retrieve_boolean(person_hash.delete(:is_member))
 
       mobile_phone_number = person_hash.delete(:mobile_phone_number)
       main_phone_number = person_hash.delete(:main_phone_number)
 
       Person.upsert(person_hash.to_h)
 
-      person_id = Person.find_by(first_name: person_hash[:first_name],
-                                 last_name: person_hash[:last_name],
-                                 address: person_hash[:address]).id
+      person = DataMigrator.person_from_row(person_hash)
+
+      unless is_member
+        ActsAsTaggableOn::Tagging.upsert({
+          tag_id: non_member_tag.id,
+          taggable_id: person.id,
+          taggable_type: "Person",
+          context: 'tags',
+          tagger_id: nil,
+          tagger_type: nil
+        })
+      end
 
       phone_attrs = DataMigrator.phone_number_attributes(mobile_phone_number,
                                                          main_phone_number,
-                                                         person_id)
+                                                         person.id)
 
       PhoneNumber.upsert_all(phone_attrs) unless phone_attrs.empty?
 

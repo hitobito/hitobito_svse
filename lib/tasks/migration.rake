@@ -47,6 +47,7 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
     biz_contact.createdon AS recruited_at,
     biz_contact.title,
     biz_contact.deathdate AS died_at,
+    biz_contact.ismember AS is_member,
     biz_bankpost.iban AS iban,
     biz_contact.textfield1 AS occupation,
     biz_contact.mobile AS mobile_phone_number,
