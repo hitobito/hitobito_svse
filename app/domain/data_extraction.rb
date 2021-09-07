@@ -18,16 +18,17 @@ class DataExtraction
   def query(table = nil, field_sql = '*', condition_sql = '')
     raise ArgumentError, 'Table needs to be passed' if @query.nil? && table.nil?
 
-    @query = <<-SQL.strip_heredoc.split("\n").map(&:strip).join(' ').gsub(/\s+/, ' ')
-      COPY(SELECT #{field_sql}
-      FROM #{table}
-      #{condition_sql})
-      to stdout with CSV HEADER
+    @query = <<~SQL.split("\n").map(&:strip).join(' ').gsub(/\s+/, ' ')
+      COPY (
+        SELECT #{field_sql}
+        FROM #{table}
+        #{condition_sql}
+      ) to stdout with CSV HEADER
     SQL
   end
 
   def show_query
-    puts @query.gsub(/INTO OUTFILE.*FROM/, 'FROM') # rubocop:disable Rails/Output
+    puts @query.gsub(/COPY \((.*)\) to stdout with CSV HEADER/, '\1').strip # rubocop:disable Rails/Output
   end
 
   def dump
