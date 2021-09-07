@@ -40,7 +40,7 @@ class DataExtraction
     unless @query
       raise "No Query set, please use #{self.class.name}#query(table, fields, joins) to set one"
     end
-    
+
     `psql -h #{ENV['PGHOSTNAME']} -U #{ENV['PGUSERNAME']} -c \"#{@query}\" #{database}`
   end
 
