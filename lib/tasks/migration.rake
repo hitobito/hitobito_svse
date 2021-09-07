@@ -2,7 +2,7 @@
 
 require_relative '../../app/domain/data_extraction'
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockLength,Rails/RakeEnvironment
 namespace :migration do
   task :clean do
     rm_f 'db/seeds/production/people.csv'
@@ -24,7 +24,7 @@ directory 'db/seeds/production'
 file('db/seeds/production/people.csv').clear
 file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
   migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_contact', <<-SQL.strip_heredoc, <<-CONDITIONS.strip_heredoc)
+  migrator.query('biz_contact', <<~SQL, <<~CONDITIONS)
     biz_contact.firstname as first_name,
     biz_contact.lastname as last_name,
     biz_contact.email as email,
@@ -65,7 +65,7 @@ end
 file('db/seeds/production/companies.csv').clear
 file 'db/seeds/production/companies.csv' => 'db/seeds/production' do |task|
   migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_company', <<-SQL.strip_heredoc, <<-CONDITIONS.strip_heredoc)
+  migrator.query('biz_company', <<~SQL, <<~CONDITIONS)
     biz_company.name as company_name,
     biz_company.email as email,
     biz_address.addressline1 AS address,
@@ -80,3 +80,4 @@ file 'db/seeds/production/companies.csv' => 'db/seeds/production' do |task|
   CONDITIONS
   migrator.dump
 end
+# rubocop:enable Metrics/BlockLength,Rails/RakeEnvironment
