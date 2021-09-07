@@ -25,8 +25,9 @@ puzzlers = ['Andreas Maierhofer',
             'Carlo Beltrame',
             'Tobias Hinderling',
             'Olivier Brian',
+            'Matthias Viehweger',
             'Pascal Simon']
-            
+
 
 devs = {'Bruno Schmid' => 'bruno.schmid@svse.ch'}
 devs['Ivo Stierli'] = 'ivo.stierli@svse.ch'
