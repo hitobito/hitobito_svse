@@ -7,11 +7,15 @@ namespace :migration do
   task :clean do
     rm_f 'db/seeds/production/people.csv'
     rm_f 'db/seeds/production/companies.csv'
+    rm_f 'db/seeds/production/sport_memberships.csv'
+    rm_f 'db/seeds/production/functions.csv'
   end
 
   task extract: [
     'db/seeds/production/people.csv',
-    'db/seeds/production/companies.csv'
+    'db/seeds/production/companies.csv',
+    'db/seeds/production/sport_memberships.csv',
+    'db/seeds/production/functions.csv'
   ]
 
   task prepare_seed: [:extract] do
@@ -77,6 +81,44 @@ file 'db/seeds/production/companies.csv' => 'db/seeds/production' do |task|
     LEFT JOIN aes_lov AS canton_lov ON biz_address.cantonid=canton_lov.id
     LEFT JOIN aes_lov AS country_lov ON biz_address.countryid=country_lov.id
     WHERE biz_company.deleted='f'
+  CONDITIONS
+  migrator.dump
+end
+
+file('db/seeds/production/sport_memberships.csv').clear
+file 'db/seeds/production/sport_memberships.csv' => 'db/seeds/production' do |task|
+  migrator = DataExtraction.new(task.name, 'postgres')
+  migrator.query('biz_contact_sport', <<~SQL, <<~CONDITIONS)
+    biz_contact.firstname AS first_name,
+    biz_contact.lastname AS last_name,
+    biz_address.addressline1 AS address,
+    sport.lovlic AS sportart,
+    aes_org.name AS section_name
+  SQL
+    LEFT JOIN aes_lov as sport ON biz_contact_sport.sportid=sport.id
+    LEFT JOIN biz_contact ON biz_contact_sport.contactid=biz_contact.id
+    LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
+    LEFT JOIN aes_org ON biz_contact_sport.ownersuborgid=aes_org.id
+    WHERE biz_contact_sport.deleted='f'
+  CONDITIONS
+  migrator.dump
+end
+
+file('db/seeds/production/functions.csv').clear
+file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
+  migrator = DataExtraction.new(task.name, 'postgres')
+  migrator.query('biz_contact_function', <<~SQL, <<~CONDITIONS)
+    biz_contact.firstname AS first_name,
+    biz_contact.lastname AS last_name,
+    biz_address.addressline1 AS address,
+    biz_function.name AS function_name,
+    section.name AS section_name
+  SQL
+    LEFT JOIN biz_contact ON biz_contact_function.contactid=biz_contact.id
+    INNER JOIN biz_function ON biz_contact_function.functionid=biz_function.id
+    LEFT JOIN aes_org AS section ON biz_contact_function.ownersuborgid=section.id
+    LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
+    WHERE biz_contact.deleted='f'
   CONDITIONS
   migrator.dump
 end
