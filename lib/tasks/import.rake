@@ -25,7 +25,7 @@ namespace :import do
                                            :recruited_by_address)
 
       person_hash[:email] = DataMigrator.person_email(person_hash)
-      person_hash[:country] = DataMigrator.refactor_country(person_hash[:country])
+      person_hash[:country] = DataMigrator.remove_lov_prefix(person_hash[:country])
       person_hash[:occupation] = DataMigrator.check_occupation(person_hash[:occupation])
       person_hash[:created_at] = person_hash.delete(:joined_at)
       is_member = DataMigrator.retrieve_boolean(person_hash.delete(:is_member))
@@ -73,7 +73,7 @@ namespace :import do
       company_hash = company_row.to_h
       company_hash[:email] = DataMigrator.person_email(company_hash)
 
-      company_hash[:country] = DataMigrator.refactor_country(company_hash[:country])
+      company_hash[:country] = DataMigrator.remove_lov_prefix(company_hash[:country])
 
       Person.upsert(company_hash.to_h.merge(company: true))
 
@@ -134,6 +134,25 @@ namespace :import do
     end
 
     puts 'Funktionen als Rollen erfolgreich importiert!'
+  end
+
+  desc 'Import subscriptions'
+  task subscriptions: [:environment] do
+    subscriptions_csv = Wagons.find('svse').root.join('db/seeds/production/subscriptions.csv')
+    raise unless subscriptions_csv.exist?
+
+    CSV.parse(subscriptions_csv.read,
+              headers: true,
+              header_converters: :symbol).each do |subscription_row|
+      subscription_hash = subscription_row.to_h
+      attrs = DataMigrator.subscriptions_attrs(subscription_hash)
+
+      next if attrs.empty?
+
+      Subscription.upsert_all(attrs)
+    end
+
+    puts 'Abonnements erfolgreich importiert!'
   end
 end
 # rubocop:enable Metrics/BlockLength

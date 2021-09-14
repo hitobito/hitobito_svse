@@ -9,13 +9,15 @@ namespace :migration do
     rm_f 'db/seeds/production/companies.csv'
     rm_f 'db/seeds/production/sport_memberships.csv'
     rm_f 'db/seeds/production/functions.csv'
+    rm_f 'db/seeds/production/subscriptions.csv'
   end
 
   task extract: [
     'db/seeds/production/people.csv',
     'db/seeds/production/companies.csv',
     'db/seeds/production/sport_memberships.csv',
-    'db/seeds/production/functions.csv'
+    'db/seeds/production/functions.csv',
+    'db/seeds/production/subscriptions.csv'
   ]
 
   task prepare_seed: [:extract] do
@@ -121,6 +123,31 @@ file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
     LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
     WHERE biz_contact.deleted='f'
   CONDITIONS
+
+  migrator.dump
+end
+
+file('db/seeds/production/subscriptions.csv').clear
+file 'db/seeds/production/subscriptions.csv' => 'db/seeds/production' do |task|
+  migrator = DataExtraction.new(task.name, 'postgres')
+  migrator.query('biz_contact', <<-SQL.strip_heredoc, <<-CONDITIONS.strip_heredoc)
+    biz_contact.firstname as first_name,
+    biz_contact.lastname as last_name,
+    biz_address.addressline1 AS address,
+    biz_contact.noadvertising AS no_advertising,
+    newsletter_dachverband.lovlic AS newsletter_dachverband_subscriber,
+    bulletin.lovlic AS bulletin_subscriber,
+    versand.lovlic AS versand_subscriber,
+    newsletter_sektion.lovlic AS newsletter_sektion_subscriber
+  SQL
+    LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
+    LEFT JOIN aes_lov AS newsletter_dachverband ON biz_contact.abo1id=newsletter_dachverband.id
+    LEFT JOIN aes_lov AS bulletin ON biz_contact.abo2id=bulletin.id
+    LEFT JOIN aes_lov AS versand ON biz_contact.abo3id=versand.id
+    LEFT JOIN aes_lov AS newsletter_sektion ON biz_contact.abo4id=newsletter_sektion.id
+    WHERE biz_contact.deleted='f'
+  CONDITIONS
+
   migrator.dump
 end
 # rubocop:enable Metrics/BlockLength,Rails/RakeEnvironment

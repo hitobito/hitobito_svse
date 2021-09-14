@@ -9,7 +9,7 @@
 class DataMigrator
 
   class << self
-    def refactor_country(country_phrase)
+    def remove_lov_prefix(country_phrase)
       country_phrase.to_s.split('.').last
     end
 
@@ -110,6 +110,46 @@ class DataMigrator
       ]
     end
 
+    def subscriptions_attrs(row)
+      person = person_from_row(row)
+
+      attrs = []
+
+      if row[:no_advertising] == 'f'
+        attrs << {
+          subscriber_type: 'Person',
+          subscriber_id: person.id,
+          mailing_list_id: dachverband_mailing_list(:advertising).id
+        }
+      end
+
+      [:newsletter_dachverband_subscriber,
+       :bulletin_subscriber].each do |key|
+         if remove_lov_prefix(row[key]) == 'Yes'
+           attrs << {
+             subscriber_type: 'Person',
+             subscriber_id: person.id,
+             mailing_list_id: dachverband_mailing_list(key).id
+           }
+         end
+      end
+
+      [:versand_subscriber,
+       :newsletter_section_subscriber].each do |key|
+         if remove_lov_prefix(row[key]) == 'Yes'
+           attrs += person.groups.map do |group|
+             {
+               subscriber_type: 'Person',
+               subscriber_id: person.id,
+               mailing_list_id: versand_mailing_list(key, group).id
+             }
+           end
+         end
+       end
+
+      attrs.flatten.reject { |subscription_attrs| Subscription.exists?(subscription_attrs) }
+    end
+
     def person_from_row(row)
       Person.find_by(first_name: row[:first_name],
                      last_name: row[:last_name],
@@ -121,6 +161,29 @@ class DataMigrator
     end
 
     private
+
+    def dachverband_mailing_list(key)
+      name = {
+        advertising: 'Werbung SVSE',
+        newsletter_dachverband_subscriber: 'Newsletter',
+        bulletin_subscriber: 'Bulletin'
+      }[key]
+
+      MailingList.find_or_create_by(name: name,
+                                    group_id: Group.find_by(name: 'SVSE').id,
+                                    subscribable: true)
+    end
+
+    def section_mailing_list(key, group)
+      name = {
+        versand_subscriber: 'Versand',
+        newsletter_section_subscriber: 'Newsletter',
+      }[key]
+
+      MailingList.find_or_create_by(name: name,
+                                    group_id: group.layer_group.id,
+                                    subscribable: true)
+    end
 
     def section_from_row(row)
       return if row[:section_name] == 'COMMON'
@@ -135,7 +198,7 @@ class DataMigrator
 
       return unless section
 
-      Group.find_or_create_by(name: refactor_country(row[:sportart]),
+      Group.find_or_create_by(name: remove_lov_prefix(row[:sportart]),
                               parent_id: section.id,
                               type: 'Group::Sportart')
     end
