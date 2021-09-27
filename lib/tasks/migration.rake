@@ -48,6 +48,8 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
     recruited_by_address.addressline1 AS recruited_by_address,
     biz_contact.createdon AS recruited_at,
     biz_contact.title,
+    biz_contact.birthdate AS birthday,
+    state_lov.lovlic AS state,
     biz_contact.deathdate AS died_at,
     biz_contact.ismember AS is_member,
     biz_bankpost.iban AS iban,
@@ -59,6 +61,7 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
     LEFT JOIN biz_bankpost ON biz_contact.prbankpostid=biz_bankpost.id
     LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
     LEFT JOIN biz_company ON biz_contact.companyid=biz_company.id
+    LEFT JOIN aes_lov AS state_lov ON biz_contact.contactstatusid=state_lov.id
     LEFT JOIN biz_contact AS recruited_by ON biz_contact.referredbycontactid=recruited_by.id
     LEFT JOIN biz_address AS recruited_by_address ON recruited_by.praddressid=recruited_by_address.id
     LEFT JOIN aes_lov AS canton_lov ON biz_address.cantonid=canton_lov.id

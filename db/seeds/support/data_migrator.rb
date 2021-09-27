@@ -57,8 +57,7 @@ class DataMigrator
       row[:email]
     end
 
-    def role_attrs_from_sport_participation(row)
-      person = person_from_row(row)
+    def role_attrs_from_sport_participation(row, person)
       group = sportart_from_row(row)
 
       return unless group && person
@@ -70,9 +69,7 @@ class DataMigrator
       }
     end
 
-    def role_attrs_for_login_apprentice(row)
-      person = person_from_row(row)
-
+    def role_attrs_for_login_apprentice(row, person)
       return unless person
 
       {
@@ -82,7 +79,9 @@ class DataMigrator
       }
     end
 
-    def role_attrs_from_function(row)
+    def role_attrs_from_function(row, person)
+      return unless person
+
       supported_functions = {
         JuniorIn: 'Junior',
         Ehrenmitglied: 'Ehrenmitglied',
@@ -95,15 +94,14 @@ class DataMigrator
 
       return unless role_type && section
 
-      person_id = person_from_row(row).id
       [
         {
-          person_id: person_id,
+          person_id: person.id,
           group_id: section.id,
           type: "Group::Sektion::#{role_type}"
         },
         {
-          person_id: person_id,
+          person_id: person.id,
           group_id: Group.find_by(name: 'SVSE').id,
           type: "Group::Svse::#{role_type}"
         }
