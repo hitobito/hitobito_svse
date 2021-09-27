@@ -28,6 +28,16 @@ namespace :import do
       person_hash[:country] = DataMigrator.remove_lov_prefix(person_hash[:country])
       person_hash[:occupation] = DataMigrator.check_occupation(person_hash[:occupation])
       person_hash[:created_at] = person_hash.delete(:joined_at)
+      if person_hash[:died_at].present?
+        person_hash[:state] = 'deceased'
+      else
+        person_hash[:state] = case DataMigrator.remove_lov_prefix(person_hash[:state])
+                              when 'Active' then 'active'
+                              when 'Passive', 'General' then 'passive'
+                              when 'Inactive' then 'resigned'
+                              when 'Departed' then 'deceased'
+                              end
+      end
       is_member = DataMigrator.retrieve_boolean(person_hash.delete(:is_member))
 
       mobile_phone_number = person_hash.delete(:mobile_phone_number)
@@ -104,10 +114,14 @@ namespace :import do
               header_converters: :symbol).each do |sport_membership_row|
       sport_membership_hash = sport_membership_row.to_h
 
+      person = DataMigrator.person_from_row(sport_membership_row)
+
+      next if person&.resigned?
+
       if sport_membership_hash[:section_name] == 'login Lernende (Mandant)'
-        attrs = DataMigrator.role_attrs_for_login_apprentice(sport_membership_hash)
+        attrs = DataMigrator.role_attrs_for_login_apprentice(sport_membership_hash, person)
       else
-        attrs = DataMigrator.role_attrs_from_sport_participation(sport_membership_hash)
+        attrs = DataMigrator.role_attrs_from_sport_participation(sport_membership_hash, person)
       end
 
       next if attrs.nil? || Role.exists?(attrs)
@@ -126,7 +140,11 @@ namespace :import do
     CSV.parse(functions_csv.read, headers: true, header_converters: :symbol).each do |function_row|
       function_hash = function_row.to_h
 
-      attrs = DataMigrator.role_attrs_from_function(function_hash)
+      person = DataMigrator.person_from_row(function_row)
+
+      next if person&.resigned?
+
+      attrs = DataMigrator.role_attrs_from_function(function_hash, person)
 
       next unless attrs.present?
 
