@@ -99,12 +99,14 @@ file 'db/seeds/production/sport_memberships.csv' => 'db/seeds/production' do |ta
     biz_contact.lastname AS last_name,
     biz_address.addressline1 AS address,
     sport.lovlic AS sportart,
-    aes_org.name AS section_name
+    aes_org.name AS section_name,
+    common_section.name AS common_section_name
   SQL
     LEFT JOIN aes_lov as sport ON biz_contact_sport.sportid=sport.id
     LEFT JOIN biz_contact ON biz_contact_sport.contactid=biz_contact.id
     LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
     LEFT JOIN aes_org ON biz_contact_sport.ownersuborgid=aes_org.id
+    LEFT JOIN aes_org AS common_section ON biz_contact.ownersuborgid=common_section.id
     WHERE biz_contact_sport.deleted='f'
   CONDITIONS
   migrator.dump
@@ -118,12 +120,14 @@ file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
     biz_contact.lastname AS last_name,
     biz_address.addressline1 AS address,
     biz_function.name AS function_name,
-    section.name AS section_name
+    section.name AS section_name,
+    common_section.name AS common_section_name
   SQL
     LEFT JOIN biz_contact ON biz_contact_function.contactid=biz_contact.id
     INNER JOIN biz_function ON biz_contact_function.functionid=biz_function.id
     LEFT JOIN aes_org AS section ON biz_contact_function.ownersuborgid=section.id
     LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
+    LEFT JOIN aes_org AS common_section ON biz_contact.ownersuborgid=common_section.id
     WHERE biz_contact.deleted='f'
   CONDITIONS
 

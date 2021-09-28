@@ -43,6 +43,8 @@ namespace :import do
       mobile_phone_number = person_hash.delete(:mobile_phone_number)
       main_phone_number = person_hash.delete(:main_phone_number)
 
+      person_hash[:id] = DataMigrator.person_from_row(person_hash)&.id
+
       Person.upsert(person_hash.to_h)
 
       person = DataMigrator.person_from_row(person_hash)
@@ -62,7 +64,10 @@ namespace :import do
                                                          main_phone_number,
                                                          person.id)
 
-      PhoneNumber.upsert_all(phone_attrs) unless phone_attrs.empty?
+      phone_numbers_exist = PhoneNumber.exists?(contactable_type: 'Person',
+                                                contactable_id: person.id)
+
+      PhoneNumber.upsert_all(phone_attrs) unless phone_attrs.empty? || phone_numbers_exist
 
       raw_recruited_people << person_row if person_row[:recruited_by_first_name].present?
     end
@@ -102,7 +107,7 @@ namespace :import do
     puts 'Unternehmen erfolgreich importiert!'
   end
 
-  desc 'Import sports participations as roles'
+  desc 'Import sports memberships as roles'
   task sport_memberships: [:environment] do
     sport_memberships_csv = Wagons.find('svse')
                                   .root
