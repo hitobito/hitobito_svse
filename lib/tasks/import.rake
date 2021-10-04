@@ -124,7 +124,7 @@ namespace :import do
       next if person&.resigned?
 
       if sport_membership_hash[:section_name] == 'login Lernende (Mandant)'
-        attrs = DataMigrator.role_attrs_for_login_apprentice(sport_membership_hash, person)
+        attrs = DataMigrator.role_attrs_for_login_apprentice(person)
       else
         attrs = DataMigrator.role_attrs_from_sport_participation(sport_membership_hash, person)
       end
@@ -149,9 +149,16 @@ namespace :import do
 
       next if person&.resigned?
 
-      attrs = DataMigrator.role_attrs_from_function(function_hash, person)
+      attrs = case function_hash[:function_name]
+              when 'Obmann Obfrau' then DataMigrator.role_attrs_for_ombudsperson(function_hash,
+                                                                                 person)
+              when 'Freimitglied' then DataMigrator.role_attrs_for_freimitglied(function_hash,
+                                                                                person)
+              else 
+                DataMigrator.role_attrs_from_function(function_hash, person)
+      end.reject { |attr| Role.exists?(attr) }
 
-      next unless attrs.present?
+      next if attrs.empty?
 
       Role.upsert_all(attrs)
     end
