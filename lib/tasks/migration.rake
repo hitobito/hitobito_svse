@@ -120,14 +120,16 @@ file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
     biz_contact.lastname AS last_name,
     biz_address.addressline1 AS address,
     biz_function.name AS function_name,
+    common_section.name AS common_section_name,
     section.name AS section_name,
-    common_section.name AS common_section_name
+    sport.lovlic AS sportart
   SQL
     LEFT JOIN biz_contact ON biz_contact_function.contactid=biz_contact.id
     INNER JOIN biz_function ON biz_contact_function.functionid=biz_function.id
     LEFT JOIN aes_org AS section ON biz_contact_function.ownersuborgid=section.id
     LEFT JOIN biz_address ON biz_contact.praddressid=biz_address.id
     LEFT JOIN aes_org AS common_section ON biz_contact.ownersuborgid=common_section.id
+    LEFT JOIN aes_lov AS sport ON biz_contact_function.sportid=sport.id
     WHERE biz_contact.deleted='f'
   CONDITIONS
 

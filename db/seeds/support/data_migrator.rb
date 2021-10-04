@@ -69,7 +69,7 @@ class DataMigrator
       }
     end
 
-    def role_attrs_for_login_apprentice(row, person)
+    def role_attrs_for_login_apprentice(person)
       return unless person
 
       {
@@ -79,21 +79,52 @@ class DataMigrator
       }
     end
 
+    def role_attrs_for_freimitglied(row, person)
+      return [] unless person
+
+      section = section_from_row(row)
+
+      return [] unless section
+      
+      [
+        {
+          person_id: person.id,
+          group_id: section.id,
+          type: "Group::Sektion::Freimitglied"
+        }
+      ]
+    end
+
+    def role_attrs_for_ombudsperson(row, person)
+      return [] unless row[:sportart] && person
+
+      group = sportart_from_row(row)
+
+      return [] unless group
+
+      [
+        {
+          person_id: person.id,
+          group_id: group.id,
+          type: "Group::Sportart::OmbudsPerson"
+        }
+      ]
+    end
+
     def role_attrs_from_function(row, person)
-      return unless person
+      return [] unless person
 
       supported_functions = {
         JuniorIn: 'Junior',
         Ehrenmitglied: 'Ehrenmitglied',
-        Freimitglied: 'Freimitglied'
       }
 
       role_type = supported_functions[row[:function_name].to_sym]
 
       section = section_from_row(row)
 
-      return unless role_type && section
-
+      return [] unless role_type && section
+      
       [
         {
           person_id: person.id,
