@@ -105,7 +105,7 @@ class DataMigrator
           group_id: Group.find_by(name: 'SVSE').id,
           type: "Group::Svse::#{role_type}"
         }
-      ]
+      ].reject { |attrs| Role.exists?(attrs) }
     end
 
     def subscriptions_attrs(row)
@@ -184,9 +184,9 @@ class DataMigrator
     end
 
     def section_from_row(row)
-      return if row[:section_name] == 'COMMON'
+      section_name = row[:section_name] == 'COMMON' ? row[:common_section_name] : row[:section_name]
 
-      Group.find_or_create_by(name: row[:section_name].delete_suffix('(Mandant)').strip,
+      Group.find_or_create_by(name: section_name.delete_suffix('(Mandant)').strip,
                               type: 'Group::Sektion',
                               parent_id: Group.find_by(name: 'SVSE').id)
     end
