@@ -52,7 +52,7 @@ class DataMigrator
     end
 
     def person_email(row)
-      return nil if row[:email].present? && Person.exists?(email: row[:mail])
+      return nil if row[:email].present? && Person.exists?(email: row[:email])
 
       row[:email]
     end
