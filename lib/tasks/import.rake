@@ -43,6 +43,8 @@ namespace :import do
       mobile_phone_number = person_hash.delete(:mobile_phone_number)
       main_phone_number = person_hash.delete(:main_phone_number)
 
+      common_section_name = person_hash.delete(:common_section_name)
+
       person_hash[:id] = DataMigrator.person_from_row(person_hash)&.id
 
       Person.upsert(person_hash.to_h)
@@ -53,10 +55,10 @@ namespace :import do
         ActsAsTaggableOn::Tagging.upsert({
           tag_id: non_member_tag.id,
           taggable_id: person.id,
-          taggable_type: "Person",
+          taggable_type: 'Person',
           context: 'tags',
-          tagger_id: nil,
-          tagger_type: nil
+          tagger_id: 1,
+          tagger_type: 'Person'
         })
       end
 
@@ -66,6 +68,11 @@ namespace :import do
 
       phone_numbers_exist = PhoneNumber.exists?(contactable_type: 'Person',
                                                 contactable_id: person.id)
+
+      common_membership_attrs = DataMigrator.role_attrs_for_common_membership(person,
+                                                                              common_section_name)
+
+      Role.upsert(common_membership_attrs) if !Role.exists?(common_membership_attrs) && is_member
 
       PhoneNumber.upsert_all(phone_attrs) unless phone_attrs.empty? || phone_numbers_exist
 
@@ -149,14 +156,7 @@ namespace :import do
 
       next if person&.resigned?
 
-      attrs = case function_hash[:function_name]
-              when 'Obmann Obfrau' then DataMigrator.role_attrs_for_ombudsperson(function_hash,
-                                                                                 person)
-              when 'Freimitglied' then DataMigrator.role_attrs_for_freimitglied(function_hash,
-                                                                                person)
-              else 
-                DataMigrator.role_attrs_from_function(function_hash, person)
-      end.reject { |attr| Role.exists?(attr) }
+      attrs = DataMigrator.role_attrs_from_function(function_hash, person)
 
       next if attrs.empty?
 

@@ -57,6 +57,18 @@ class DataMigrator
       row[:email]
     end
 
+    def role_attrs_for_common_membership(person, common_section_name)
+      group = section_from_row({ section_name: common_section_name })
+
+      return unless group && person
+
+      {
+        person_id: person.id,
+        group_id: group.id,
+        type: 'Group::Sektion::Mitglied'
+      }
+    end
+
     def role_attrs_from_sport_participation(row, person)
       group = sportart_from_row(row)
 
@@ -79,64 +91,52 @@ class DataMigrator
       }
     end
 
-    def role_attrs_for_freimitglied(row, person)
-      return [] unless person
-
-      section = section_from_row(row)
-
-      return [] unless section
-      
-      [
-        {
-          person_id: person.id,
-          group_id: section.id,
-          type: "Group::Sektion::Freimitglied"
-        }
-      ]
-    end
-
-    def role_attrs_for_ombudsperson(row, person)
-      return [] unless row[:sportart] && person
-
-      group = sportart_from_row(row)
-
-      return [] unless group
-
-      [
-        {
-          person_id: person.id,
-          group_id: group.id,
-          type: "Group::Sportart::OmbudsPerson"
-        }
-      ]
-    end
-
     def role_attrs_from_function(row, person)
       return [] unless person
 
-      supported_functions = {
-        JuniorIn: 'Junior',
-        Ehrenmitglied: 'Ehrenmitglied',
-      }
-
-      role_type = supported_functions[row[:function_name].to_sym]
-
       section = section_from_row(row)
 
-      return [] unless role_type && section
+      sportart = sportart_from_row(row)
+
+      root = Group.find_by(name: 'SVSE')
+
+      section_type_prefix = 'Group::Sektion::'
+      root_type_prefix = 'Group::Svse::'
+
+      supported_functions = {
+        'Obmann Obfrau': [
+          { group_id: sportart.id, type: 'Group::Sportart::OmbudsPerson' },
+          { group_id: section.id, type: "#{section_type_prefix}ObmannSportart" },
+        ],
+        MutationsführerIn: [
+          { group_id: section.id, type: "#{section_type_prefix}Mutationsfuehrer" },
+        ],
+        Freimitglied: [
+          { group_id: section.id, type: "#{section_type_prefix}Freimitglied" },
+        ],
+        JuniorIn: [
+          { group_id: section.id, type: "#{section_type_prefix}Junior" },
+          { group_id: root.id, type: "#{root_type_prefix}Junior" }
+        ],
+        Ehrenmitglied: [
+          { group_id: section.id, type: "#{section_type_prefix}Ehrenmitglied" },
+          { group_id: root.id, type: "#{root_type_prefix}Ehrenmitglied" }
+        ],
+        PräsidentIn: [
+          { group_id: section.id, type: "#{section_type_prefix}Praesident" },
+        ],
+        KassierIn: [
+          { group_id: section.id, type: "#{section_type_prefix}Kassier" },
+        ],
+      }
+
+      role_attrs = supported_functions[row[:function_name].to_sym]
       
-      [
-        {
-          person_id: person.id,
-          group_id: section.id,
-          type: "Group::Sektion::#{role_type}"
-        },
-        {
-          person_id: person.id,
-          group_id: Group.find_by(name: 'SVSE').id,
-          type: "Group::Svse::#{role_type}"
-        }
-      ].reject { |attrs| Role.exists?(attrs) }
+      return [] unless role_attrs
+
+      role_attrs.map do |attrs|
+        attrs.merge(person_id: person.id) 
+      end.reject { |attrs| attrs[:group_id].nil? || Role.exists?(attrs) }
     end
 
     def subscriptions_attrs(row)

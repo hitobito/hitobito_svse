@@ -53,6 +53,7 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
     biz_contact.deathdate AS died_at,
     biz_contact.ismember AS is_member,
     biz_bankpost.iban AS iban,
+    common_section.name AS common_section_name,
     biz_contact.textfield1 AS occupation,
     biz_contact.mobile AS mobile_phone_number,
     biz_contact.mainphone AS main_phone_number,
@@ -64,6 +65,7 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
     LEFT JOIN aes_lov AS state_lov ON biz_contact.contactstatusid=state_lov.id
     LEFT JOIN biz_contact AS recruited_by ON biz_contact.referredbycontactid=recruited_by.id
     LEFT JOIN biz_address AS recruited_by_address ON recruited_by.praddressid=recruited_by_address.id
+    LEFT JOIN aes_org AS common_section ON biz_contact.ownersuborgid=common_section.id
     LEFT JOIN aes_lov AS canton_lov ON biz_address.cantonid=canton_lov.id
     LEFT JOIN aes_lov AS country_lov ON biz_address.countryid=country_lov.id
     LEFT JOIN aes_lov AS salutation_lov ON biz_contact.salutationid=salutation_lov.id
@@ -109,6 +111,7 @@ file 'db/seeds/production/sport_memberships.csv' => 'db/seeds/production' do |ta
     LEFT JOIN aes_org AS common_section ON biz_contact.ownersuborgid=common_section.id
     WHERE biz_contact_sport.deleted='f'
   CONDITIONS
+
   migrator.dump
 end
 
