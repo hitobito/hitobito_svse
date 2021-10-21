@@ -215,7 +215,9 @@ class DataMigrator
     end
 
     def section_from_row(row)
-      section_name = row[:section_name] == 'COMMON' ? row[:common_section_name] : row[:section_name]
+      section_name = ['COMMON', 'SVSE Verband (Mandant)'].include?(row[:section_name]) ?
+        row[:common_section_name] : row[:section_name]
+      section_name ||= row[:section_name]
 
       Group.find_or_create_by(name: section_name.delete_suffix('(Mandant)').strip,
                               type: 'Group::Sektion',
