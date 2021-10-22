@@ -33,6 +33,10 @@ class Group::Svse < ::Group
     self.permissions = [:layer_and_below_full]
   end
 
+  class ItSupport < ::Role
+    self.permissions = [:layer_and_below_full, :contact_data, :admin, :impersonation]
+  end
+
   class Sponsor < ::Role; end
 
   class LoginLernende < ::Role
@@ -57,6 +61,7 @@ class Group::Svse < ::Group
         LoginLernende,
         Freimitglied,
         Ehrenmitglied,
-        Junior
+        Junior,
+        ItSupport
 
 end

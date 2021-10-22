@@ -52,6 +52,9 @@ de:
       group/svse/mutationsfuehrer:
         one: Mutationsführer
         description: Mutationsführer
+      group/svse/it_support:
+        one: IT Support
+        description: IT Support
       group/svse/sponsor:
         one: Sponsor
         description: Sponsor

@@ -9,6 +9,7 @@ A hitobito wagon defining the organization hierarchy and additional features for
     * Präsident: [:group_full]
     * Geschäftsleitung: [:layer_and_below_full, :admin]
     * Mutationsführer: [:layer_and_below_full]
+    * IT Support: [:layer_and_below_full, :admin, :contact_data, :impersonation]
     * Kassier: [:finance, :layer_and_below_full, :contact_data]
     * Sponsor: []
     * Login Lernende: [:group_read]
