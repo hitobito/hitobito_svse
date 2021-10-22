@@ -28,6 +28,9 @@ namespace :import do
       person_hash[:country] = DataMigrator.remove_lov_prefix(person_hash[:country])
       person_hash[:occupation] = DataMigrator.check_occupation(person_hash[:occupation])
       person_hash[:created_at] = person_hash.delete(:joined_at)
+      person_hash[:created_at] ||= Time.zone.now
+      person_hash[:updated_at] = person_hash[:created_at]
+
       if person_hash[:died_at].present?
         person_hash[:state] = 'deceased'
       else
@@ -97,13 +100,17 @@ namespace :import do
 
       company_hash[:country] = DataMigrator.remove_lov_prefix(company_hash[:country])
 
+      company_hash[:created_at] = Time.zone.now
+      company_hash[:updated_at] = company_hash[:created_at]
+
       Person.upsert(company_hash.to_h.merge(company: true))
 
       role_attrs = {
         type: 'Group::Svse::Sponsor',
         group_id: Group.find_by(name: 'SVSE').id,
-        person_id: DataMigrator.person_from_row(company_row).id
-
+        person_id: DataMigrator.person_from_row(company_row).id,
+        created_at: Time.zone.now,
+        updated_at: Time.zone.now
       }
 
       next if Role.exists?(role_attrs)
@@ -138,6 +145,9 @@ namespace :import do
 
       next if attrs.nil? || Role.exists?(attrs)
 
+      attrs[:created_at] = Time.zone.now
+      attrs[:updated_at] = attrs[:created_at]
+
       Role.upsert(attrs)
     end
 
@@ -160,6 +170,10 @@ namespace :import do
 
       next if attrs.empty?
 
+      timestamps = { created_at: Time.zone.now, updated_at: Time.zone.now }
+
+      attrs.map! { |a| a.merge(timestamps) }
+
       Role.upsert_all(attrs)
     end
 
@@ -178,6 +192,9 @@ namespace :import do
       attrs = DataMigrator.subscriptions_attrs(subscription_hash)
 
       next if attrs.empty?
+
+      attrs[:created_at] = Time.zone.now
+      attrs[:updated_at] = attrs[:created_at]
 
       Subscription.upsert_all(attrs)
     end
