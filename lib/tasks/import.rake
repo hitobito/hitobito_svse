@@ -71,9 +71,12 @@ namespace :import do
 
       phone_numbers_exist = PhoneNumber.exists?(contactable_type: 'Person',
                                                 contactable_id: person.id)
-
       common_membership_attrs = DataMigrator.role_attrs_for_common_membership(person,
                                                                               common_section_name)
+      common_membership_attrs.merge!({
+        created_at: Time.zone.now,
+        updated_at: Time.zone.now
+      })
 
       Role.upsert(common_membership_attrs) if !Role.exists?(common_membership_attrs) && is_member
 
