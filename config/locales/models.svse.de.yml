@@ -134,6 +134,11 @@ de:
         state: Status
         state_label: Status
         title: Titel
-
+      invoice:
+        payment_slips:
+          qr: QR Rechnung
+      invoice_config:
+        payment_slips:
+          qr: QR Rechnung
   attributes:
     created_info: Eintrittsdatum
