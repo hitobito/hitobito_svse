@@ -38,6 +38,10 @@ de:
         one: Ehrenmitglieder
         other: Ehrenmitglieder
 
+      group/anlass:
+        one: Anlass
+        other: Anlässe
+
       ### ROLES
 
       group/svse/geschaeftsleitung:
@@ -116,6 +120,12 @@ de:
       group/sportart/mitglied:
         one: Mitglied
         description: Mitglied
+      group/anlass/kassier:
+        one: Kassier
+        description: Kassier
+      group/anlass/organisationsmitglied:
+        one: Organisationsmitglied
+        description: Organisationsmitglied
 
     attributes:
       person:
