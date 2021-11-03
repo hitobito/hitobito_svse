@@ -43,15 +43,12 @@ class Group::Svse < ::Group
     self.permissions = [:group_read]
   end
 
-  class Freimitglied < ::Role
-    self.permissions = [:group_read]
-  end
-
-  class Ehrenmitglied < ::Role; end
-
   class Junior < ::Role
     self.permissions = [:group_read]
   end
+
+  class Freimitglied < ::Role; end
+  class Ehrenmitglied < ::Role; end
 
   roles Praesident,
         Geschaeftsleitung,

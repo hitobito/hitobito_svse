@@ -13,7 +13,7 @@ A hitobito wagon defining the organization hierarchy and additional features for
     * Kassier: [:finance, :layer_and_below_full, :contact_data]
     * Sponsor: []
     * Login Lernende: [:group_read]
-    * Freimitglied: [:group_read]
+    * Freimitglied: []
     * Ehrenmitglied: []
     * Junior: [:group_read]
   * Ressortmitarbeitende
@@ -32,7 +32,7 @@ A hitobito wagon defining the organization hierarchy and additional features for
     * Read Only: []
     * Ehrenmitglied: [:group_read]
     * Login Lernende: [:group_read]
-    * Freimitglied: [:group_read]
+    * Freimitglied: []
     * Junior: [:group_read]
   * Sportart
     * Ombudsfrau/-mann: [:group_full]

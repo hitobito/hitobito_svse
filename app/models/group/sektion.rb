@@ -30,10 +30,6 @@ class Group::Sektion < ::Group
     self.permissions = [:group_read]
   end
 
-  class Freimitglied < ::Role
-    self.permissions = [:group_read]
-  end
-
   class Junior < ::Role
     self.permissions = [:group_read]
   end
@@ -46,6 +42,7 @@ class Group::Sektion < ::Group
     self.permissions = [:group_full]
   end
 
+  class Freimitglied < ::Role; end
   class Mitglied < ::Role; end
   class ReadOnly < ::Role; end
 
