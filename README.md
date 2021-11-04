@@ -25,7 +25,7 @@ A hitobito wagon defining the organization hierarchy and additional features for
 * Sektion
   * Sektion
     * Präsident: [:group_full]
-    * Obmann Sportart: [:group_full]
+    * Obfrau/-Mann Sportart: [:group_full]
     * Mutationsführer: [:layer_and_below_full]
     * Kassier: [:finance, :layer_and_below_full]
     * Mitglied: []
@@ -35,7 +35,7 @@ A hitobito wagon defining the organization hierarchy and additional features for
     * Freimitglied: []
     * Junior: [:group_read]
   * Sportart
-    * Ombudsfrau/-mann: [:group_full]
+    * Obfrau/-Mann: [:group_full]
     * Mitglied: []
 * Global
   * Externe Kontakte

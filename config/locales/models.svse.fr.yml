@@ -74,8 +74,8 @@ de:
         one: Ehrenmitglied
         description: Ehrenmitglied
       group/sportart/ombuds_person:
-        one: Ombudsfrau/-mann
-        description: Ombudsfrau/-mann
+        one: Obfrau/-Mann
+        description: Obfrau/-Mann
       group/sportart/mitglied:
         one: Mitglied
         description: Mitglied
