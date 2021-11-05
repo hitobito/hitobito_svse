@@ -106,7 +106,7 @@ de:
         description: Junior
       group/sektion/obmann_sportart:
         one: Obfrau/-Mann Sportart
-        description: Obmann einer Sportart
+        description: Obfrau/-Mann einer Sportart
       group/sektion/praesident:
         one: Präsident
         description: Präsident
