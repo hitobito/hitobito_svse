@@ -10,6 +10,7 @@ class Group::Sektion < ::Group
   self.layer = true
 
   children Group::Sportart,
+           Group::Anlass,
            Group::ExterneKontakte
 
   ### ROLES
