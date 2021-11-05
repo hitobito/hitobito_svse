@@ -109,14 +109,14 @@ de:
         one: Junior
         description: Junior
       group/sektion/obmann_sportart:
-        one: Obmann Sportart
-        description: Obmann einer Sportart
+        one: Obfrau/-Mann Sportart
+        description: Obfrau/-Mann einer Sportart
       group/sektion/praesident:
         one: Präsident
         description: Präsident
       group/sportart/ombuds_person:
-        one: Ombudsfrau/-mann
-        description: Ombudsfrau/-mann
+        one: Obfrau/-Mann
+        description: Obfrau/-Mann
       group/sportart/mitglied:
         one: Mitglied
         description: Mitglied
