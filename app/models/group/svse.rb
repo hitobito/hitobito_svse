@@ -8,6 +8,7 @@
 class Group::Svse < ::Group
 
   self.layer = true
+  self.event_types = [Event, Event::Course]
 
   children Group::RessortMitarbeitende,
            Group::TechnischeKomission,

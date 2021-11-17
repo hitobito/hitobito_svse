@@ -8,6 +8,7 @@
 class Group::Sektion < ::Group
 
   self.layer = true
+  self.event_types = [Event, Event::Course]
 
   children Group::Sportart,
            Group::Anlass,

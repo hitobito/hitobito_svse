@@ -8,6 +8,7 @@
 class Group::Anlass < ::Group
 
   self.layer = true
+  self.event_types = [Event, Event::Course]
 
   class Kassier < ::Role
     self.permissions = [:finance, :group_read]
