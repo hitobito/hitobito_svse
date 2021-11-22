@@ -6,8 +6,8 @@
 
 geschaeftsleitung:
   person: geschaeftsleitung
-  group: svse
-  type: Group::Svse::Geschaeftsleitung
+  group: geschaeftsleitung
+  type: Group::Geschaeftsleitung::Mitglied
 
 mutationsfuehrer:
   person: mutationsfuehrer
