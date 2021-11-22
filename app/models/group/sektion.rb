@@ -10,9 +10,13 @@ class Group::Sektion < ::Group
   self.layer = true
   self.event_types = [Event, Event::Course]
 
-  children Group::Sportart,
+  children Group::Vorstand,
+           Group::Sportart,
            Group::Anlass,
-           Group::ExterneKontakte
+           Group::Ehemalige,
+           Group::Passivmitglieder,
+           Group::ExterneKontakte,
+           Group::Funktionaere
 
   ### ROLES
 
@@ -21,11 +25,7 @@ class Group::Sektion < ::Group
   end
 
   class Kassier < ::Role
-    self.permissions = [:finance, :layer_and_below_full]
-  end
-
-  class Ehrenmitglied < ::Role
-    self.permissions = [:group_read]
+    self.permissions = [:finance, :layer_and_below_full, :contact_data]
   end
 
   class LoginLernende < ::Role
@@ -37,27 +37,21 @@ class Group::Sektion < ::Group
   end
 
   class ObmannSportart < ::Role
-    self.permissions = [:group_full]
-  end
-
-  class Praesident < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:layer_full]
   end
 
   class Freimitglied < ::Role; end
   class Mitglied < ::Role; end
-  class ReadOnly < ::Role; end
+  class Sponsor < ::Role; end
 
 
-  roles Praesident,
-        ObmannSportart,
+  roles ObmannSportart,
         Mutationsfuehrer,
         Kassier,
         Mitglied,
-        ReadOnly,
-        Ehrenmitglied,
         LoginLernende,
         Freimitglied,
-        Junior
+        Junior,
+        Sponsor
 
 end
