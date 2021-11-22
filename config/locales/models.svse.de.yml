@@ -14,6 +14,10 @@ de:
         one: SVSE
         other: Hauptgruppen
 
+      group/geschaeftsleitung:
+        one: Geschäftsleitung
+        description: Geschäftsleitung
+
       group/sektion:
         one: Sektion
         other: Sektionen
@@ -42,17 +46,27 @@ de:
         one: Anlass
         other: Anlässe
 
+      group/ehemalige:
+        one: Ehemalige
+        description: Ehemalige
+
+      group/funktionaere:
+        one: Funktionäre
+        description: Funktionäre
+
+      group/passivmitglieder:
+        one: Passivmitglieder
+        description: Passivmitglieder
+
+      group/vorstand:
+        one: Vorstand
+        description: Vorstand
+
       ### ROLES
 
-      group/svse/geschaeftsleitung:
-        one: Geschäftsleitung
-        description: Geschäftsleitung
       group/svse/kassier:
         one: Kassier
         description: Kassier
-      group/svse/praesident:
-        one: Präsident
-        description: Präsident
       group/svse/mutationsfuehrer:
         one: Mutationsführer
         description: Mutationsführer
@@ -62,49 +76,38 @@ de:
       group/svse/sponsor:
         one: Sponsor
         description: Sponsor
-      group/svse/login_lernende:
-        one: Login Lernende
-      group/svse/freimitglied:
-        one: Freimitglied
-        description: Freimitglied
-      group/svse/ehrenmitglied:
-        one: Ehrenmitglied
-        description: Ehrenmitglied
-      group/svse/junior:
-        one: Junior
-        description: Junior
+
       group/technische_komission/mitglied:
         one: Mitglied
         description: Mitglied der TK
+
       group/ehrenmitglieder/mitglied:
         one: Mitglied
         description: Ehrenmitglied
+
       group/externe_kontakte/kontakt:
         one: Kontakt
         description: Externer Kontakt / Sponsor
+
       group/ressort_mitarbeitende/mitglied:
         one: Mitglied
         description: Mitglied Ressortmitarbeitende
+
       group/sektion/mitglied:
         one: Mitglied
         description: Mitglied
-      group/sektion/read_only:
-        one: Read Only
-        description: Read Only
       group/sektion/kassier:
         one: Kassier
         description: Kassier
       group/sektion/mutationsfuehrer:
         one: Mutationsführer
         description: Mutationsführer
-      group/sektion/ehrenmitglied:
-        one: Ehrenmitglied
-        description: Ehrenmitglied
       group/sektion/freimitglied:
         one: Freimitglied
         description: Freimitglied
-      group/sektion/login_lernende:
-        one: Login Lernende
+      group/sektion/passivmitglieder:
+        one: Passivmitglieder
+        description: Passivmitglieder
       group/sektion/junior:
         one: Junior
         description: Junior
@@ -114,18 +117,49 @@ de:
       group/sektion/praesident:
         one: Präsident
         description: Präsident
+      group/sektion/sponsor:
+        one: Sponsor
+        description: Sponsor
+      group/sektion/login_lernende:
+        one: Login Lernende
+        description: Lernende der Login
+
       group/sportart/ombuds_person:
         one: Obfrau/-Mann
         description: Obfrau/-Mann
       group/sportart/mitglied:
         one: Mitglied
         description: Mitglied
+
       group/anlass/kassier:
         one: Kassier
         description: Kassier
       group/anlass/organisationsmitglied:
         one: Organisationsmitglied
         description: Organisationsmitglied
+
+      group/vorstand/mitglied:
+        one: Mitglied
+        description: Mitglied
+
+      group/ehemalige/mitglied:
+        one: Mitglied
+        description: Mitglied
+
+      group/geschaeftsleitung/mitglied:
+        one: Mitglied
+        description: Mitglied
+      group/geschaeftsleitung/kassier:
+        one: Kassier
+        description: Kassier
+
+      group/funktionaere/mitglied:
+        one: Mitglied
+        description: Mitglied
+
+      group/passivmitglieder/mitglied:
+        one: Mitglied
+        description: Mitglied
 
     attributes:
       person:
