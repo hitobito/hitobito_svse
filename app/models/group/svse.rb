@@ -10,13 +10,14 @@ class Group::Svse < ::Group
   self.layer = true
   self.event_types = [Event, Event::Course]
 
-  children Group::RessortMitarbeitende,
+  children Group::Geschaeftsleitung,
+           Group::RessortMitarbeitende,
            Group::TechnischeKomission,
            Group::Ehrenmitglieder,
+           Group::Passivmitglieder,
            Group::ExterneKontakte,
-           Group::Sektion
-
-  ### ROLES
+           Group::Sektion,
+           Group::Ehemalige
 
   class Geschaeftsleitung < ::Role
     self.permissions = [:layer_and_below_full, :admin]
@@ -24,10 +25,6 @@ class Group::Svse < ::Group
 
   class Kassier < ::Role
     self.permissions = [:finance, :layer_and_below_full, :contact_data]
-  end
-
-  class Praesident < ::Role
-    self.permissions = [:group_full]
   end
 
   class Mutationsfuehrer < ::Role
@@ -40,26 +37,12 @@ class Group::Svse < ::Group
 
   class Sponsor < ::Role; end
 
-  class LoginLernende < ::Role
-    self.permissions = [:group_read]
-  end
-
-  class Junior < ::Role
-    self.permissions = [:group_read]
-  end
-
-  class Freimitglied < ::Role; end
   class Ehrenmitglied < ::Role; end
 
-  roles Praesident,
-        Geschaeftsleitung,
+  roles Geschaeftsleitung,
         Mutationsfuehrer,
         Kassier,
         Sponsor,
-        LoginLernende,
-        Freimitglied,
-        Ehrenmitglied,
-        Junior,
         ItSupport
 
 end
