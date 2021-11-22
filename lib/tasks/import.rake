@@ -140,11 +140,7 @@ namespace :import do
 
       next if person&.resigned?
 
-      if sport_membership_hash[:section_name] == 'login Lernende (Mandant)'
-        attrs = DataMigrator.role_attrs_for_login_apprentice(person)
-      else
-        attrs = DataMigrator.role_attrs_from_sport_participation(sport_membership_hash, person)
-      end
+      attrs = DataMigrator.role_attrs_from_sport_participation(sport_membership_hash, person)
 
       next if attrs.nil? || Role.exists?(attrs)
 

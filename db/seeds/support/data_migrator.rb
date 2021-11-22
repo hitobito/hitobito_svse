@@ -81,16 +81,6 @@ class DataMigrator
       }
     end
 
-    def role_attrs_for_login_apprentice(person)
-      return unless person
-
-      {
-        person_id: person.id,
-        group_id: Group.find_by(name: 'SVSE').id,
-        type: "Group::Svse::LoginLernende"
-      }
-    end
-
     def role_attrs_from_function(row, person)
       return [] unless person
 
@@ -98,10 +88,8 @@ class DataMigrator
 
       sportart = sportart_from_row(row)
 
-      root = Group.find_by(name: 'SVSE')
 
       section_type_prefix = 'Group::Sektion::'
-      root_type_prefix = 'Group::Svse::'
 
       supported_functions = {
         'Obmann Obfrau': [
@@ -116,14 +104,6 @@ class DataMigrator
         ],
         JuniorIn: [
           { group_id: section.id, type: "#{section_type_prefix}Junior" },
-          { group_id: root.id, type: "#{root_type_prefix}Junior" }
-        ],
-        Ehrenmitglied: [
-          { group_id: section.id, type: "#{section_type_prefix}Ehrenmitglied" },
-          { group_id: root.id, type: "#{root_type_prefix}Ehrenmitglied" }
-        ],
-        PräsidentIn: [
-          { group_id: section.id, type: "#{section_type_prefix}Praesident" },
         ],
         KassierIn: [
           { group_id: section.id, type: "#{section_type_prefix}Kassier" },
