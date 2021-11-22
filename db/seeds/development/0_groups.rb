@@ -23,6 +23,14 @@ Group::Ehrenmitglieder.seed_once(:name, :parent_id,
                                  parent_id: root.id,
                                  name: 'Ehrenmitglieder')
 
+Group::Passivmitglieder.seed_once(:name, :parent_id,
+                                  parent_id: root.id,
+                                  name: 'Passivmitglieder')
+
+Group::Ehemalige.seed_once(:name, :parent_id,
+                           parent_id: root.id,
+                           name: 'Ehemalige')
+
 Group::ExterneKontakte.seed_once(:name, :parent_id,
                                  parent_id: root.id,
                                  name: 'Externe Kontakte')
@@ -46,6 +54,23 @@ sektionen = Group::Sektion
 
 sektionen.each do |s|
   seeder.seed_social_accounts(s)
+
+  Group::Vorstand.seed_once(:name, :parent_id,
+                            parent_id: s.id,
+                            name: 'Vorstand')
+
+  Group::Ehemalige.seed_once(:name, :parent_id,
+                            parent_id: s.id,
+                            name: 'Ehemalige')
+
+  Group::Passivmitglieder.seed_once(:name, :parent_id,
+                            parent_id: s.id,
+                            name: 'Passivmitglieder')
+
+  Group::Funktionaere.seed_once(:name, :parent_id,
+                                parent_id: s.id,
+                                name: 'Funktionaere')
+
   %w(Bergsteigen Mountainbike Badminton Fussball Golf).each do |sa|
     Group::Sportart.seed_once(:name, :parent_id,
                               parent_id: s.id,
