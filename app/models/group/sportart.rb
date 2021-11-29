@@ -10,7 +10,7 @@ class Group::Sportart < ::Group
   ### ROLES
 
   class OmbudsPerson < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:layer_full]
   end
 
   class Mitglied < ::Role; end

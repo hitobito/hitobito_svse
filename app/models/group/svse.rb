@@ -14,18 +14,10 @@ class Group::Svse < ::Group
            Group::RessortMitarbeitende,
            Group::TechnischeKomission,
            Group::Ehrenmitglieder,
-           Group::Passivmitglieder,
+           Group::Ehemalige,
            Group::ExterneKontakte,
-           Group::Sektion,
-           Group::Ehemalige
-
-  class Geschaeftsleitung < ::Role
-    self.permissions = [:layer_and_below_full, :admin]
-  end
-
-  class Kassier < ::Role
-    self.permissions = [:finance, :layer_and_below_full, :contact_data]
-  end
+           Group::Passivmitglieder,
+           Group::Sektion
 
   class Mutationsfuehrer < ::Role
     self.permissions = [:layer_and_below_full]
@@ -37,12 +29,8 @@ class Group::Svse < ::Group
 
   class Sponsor < ::Role; end
 
-  class Ehrenmitglied < ::Role; end
-
-  roles Geschaeftsleitung,
-        Mutationsfuehrer,
-        Kassier,
-        Sponsor,
-        ItSupport
+  roles Mutationsfuehrer,
+        ItSupport,
+        Sponsor
 
 end

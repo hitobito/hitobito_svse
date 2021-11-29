@@ -15,6 +15,7 @@ class Group::Sektion < ::Group
            Group::Anlass,
            Group::Ehemalige,
            Group::Passivmitglieder,
+           Group::Ehrenmitglieder,
            Group::ExterneKontakte,
            Group::Funktionaere
 
@@ -36,17 +37,12 @@ class Group::Sektion < ::Group
     self.permissions = [:group_read]
   end
 
-  class ObmannSportart < ::Role
-    self.permissions = [:layer_full]
-  end
-
   class Freimitglied < ::Role; end
   class Mitglied < ::Role; end
   class Sponsor < ::Role; end
 
 
-  roles ObmannSportart,
-        Mutationsfuehrer,
+  roles Mutationsfuehrer,
         Kassier,
         Mitglied,
         LoginLernende,

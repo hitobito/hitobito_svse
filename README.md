@@ -4,39 +4,53 @@ A hitobito wagon defining the organization hierarchy and additional features for
 
 # Rollen, Berechtigungen
 
+```
 * SVSE
   * SVSE
-    * Präsident: [:group_full]
-    * Geschäftsleitung: [:layer_and_below_full, :admin]
     * Mutationsführer: [:layer_and_below_full]
-    * IT Support: [:layer_and_below_full, :admin, :contact_data, :impersonation]
     * Kassier: [:finance, :layer_and_below_full, :contact_data]
     * Sponsor: []
-    * Login Lernende: [:group_read]
-    * Freimitglied: []
-    * Ehrenmitglied: []
-    * Junior: [:group_read]
+    * IT Support: [:layer_and_below_full, :contact_data, :admin, :impersonation]
+  * Geschäftsleitung
+    * Mitglied: [:layer_read, :contact_data]
+    * Kassier: [:finance, :contact_data]
   * Ressortmitarbeitende
     * Mitglied: []
   * Technische Komission
-    * Mitglied: [:layer_and_below_full]
+    * Mitglied: [:layer_full]
   * Ehrenmitglieder
     * Mitglied: []
-* Sektion
-  * Sektion
-    * Präsident: [:group_full]
-    * Obfrau/-Mann Sportart: [:group_full]
-    * Mutationsführer: [:layer_and_below_full]
-    * Kassier: [:finance, :layer_and_below_full]
+  * Passivmitglieder
     * Mitglied: []
-    * Read Only: []
-    * Ehrenmitglied: [:group_read]
-    * Login Lernende: [:group_read]
-    * Freimitglied: []
-    * Junior: [:group_read]
-  * Sportart
-    * Obfrau/-Mann: [:group_full]
-    * Mitglied: []
-* Global
   * Externe Kontakte
     * Kontakt: []
+  * Ehemalige
+    * Mitglied: []
+  * Sektion
+    * Sektion
+      * Mutationsführer: [:layer_and_below_full]
+      * Kassier: [:finance, :layer_and_below_full, :contact_data]
+      * Mitglied: []
+      * Login Lernende: [:group_read]
+      * Freimitglied: []
+      * Junior: [:group_read]
+      * Sponsor: []
+    * Vorstand
+      * Mitglied: [:layer_and_below_full, :contact_data]
+    * Sportart
+      * Obfrau/-Mann: [:layer_full]
+      * Mitglied: []
+    * Funktionäre
+      * Mitglied: [:layer_full]
+    * Anlass
+      * Kassier: [:finance, :group_read]
+      * Organisationsmitglied: [:group_full]
+    * Passivmitglieder
+      * Mitglied: []
+    * Externe Kontakte
+      * Kontakt: []
+    * Ehemalige
+      * Mitglied: []
+    * Ehrenmitglieder
+      * Mitglied: []
+```

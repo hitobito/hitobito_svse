@@ -35,6 +35,10 @@ Group::ExterneKontakte.seed_once(:name, :parent_id,
                                  parent_id: root.id,
                                  name: 'Externe Kontakte')
 
+Group::Geschaeftsleitung.seed_once(:name, :parent_id,
+                                   parent_id: root.id,
+                                   name: 'Geschäftsleitung')
+
 sektionen = Group::Sektion
             .seed(:name, :parent_id,
                   { name: 'ESV Olten',
@@ -70,6 +74,10 @@ sektionen.each do |s|
   Group::Funktionaere.seed_once(:name, :parent_id,
                                 parent_id: s.id,
                                 name: 'Funktionaere')
+
+  Group::Ehrenmitglieder.seed_once(:name, :parent_id,
+                                   parent_id: s.id,
+                                   name: 'Ehrenmitglieder')
 
   %w(Bergsteigen Mountainbike Badminton Fussball Golf).each do |sa|
     Group::Sportart.seed_once(:name, :parent_id,
