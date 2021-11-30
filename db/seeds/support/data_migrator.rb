@@ -94,7 +94,6 @@ class DataMigrator
       supported_functions = {
         'Obmann Obfrau': [
           { group_id: sportart.id, type: 'Group::Sportart::OmbudsPerson' },
-          { group_id: section.id, type: "#{section_type_prefix}ObmannSportart" },
         ],
         MutationsführerIn: [
           { group_id: section.id, type: "#{section_type_prefix}Mutationsfuehrer" },
