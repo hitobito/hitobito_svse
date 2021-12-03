@@ -8,16 +8,15 @@ A hitobito wagon defining the organization hierarchy and additional features for
 * SVSE
   * SVSE
     * Mutationsführer: [:layer_and_below_full]
-    * Kassier: [:finance, :layer_and_below_full, :contact_data]
     * Sponsor: []
     * IT Support: [:layer_and_below_full, :contact_data, :admin, :impersonation]
   * Geschäftsleitung
-    * Mitglied: [:layer_read, :contact_data]
-    * Kassier: [:finance, :contact_data]
+    * Mitglied: [:layer_and_below_read, :contact_data]
+    * Kassier: [:layer_and_below_read, :layer_full, :contact_data]
   * Ressortmitarbeitende
     * Mitglied: []
   * Technische Komission
-    * Mitglied: [:layer_full]
+    * Mitglied: [:layer_and_below_read]
   * Ehrenmitglieder
     * Mitglied: []
   * Passivmitglieder

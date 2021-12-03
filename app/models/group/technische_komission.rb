@@ -10,7 +10,7 @@ class Group::TechnischeKomission < ::Group
   ### ROLES
 
   class Mitglied < ::Role
-    self.permissions = [:layer_full]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Mitglied

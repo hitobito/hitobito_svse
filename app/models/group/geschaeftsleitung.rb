@@ -8,11 +8,11 @@
 class Group::Geschaeftsleitung < ::Group
 
   class Mitglied < ::Role
-    self.permissions = [:layer_read, :contact_data]
+    self.permissions = [:layer_and_below_read, :contact_data]
   end
 
   class Kassier < ::Role
-    self.permissions = [:finance, :contact_data]
+    self.permissions = [:layer_and_below_read, :layer_full, :finance, :contact_data]
   end
 
   roles Mitglied, Kassier
