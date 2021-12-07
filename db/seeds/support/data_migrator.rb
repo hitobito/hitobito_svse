@@ -168,6 +168,16 @@ class DataMigrator
       value == "t"
     end
 
+    def section_from_row(row)
+      section_name = ['COMMON', 'SVSE Verband (Mandant)'].include?(row[:section_name]) ?
+        row[:common_section_name] : row[:section_name]
+      section_name ||= row[:section_name]
+
+      Group.find_or_create_by(name: section_name.delete_suffix('(Mandant)').strip,
+                              type: 'Group::Sektion',
+                              parent_id: Group.find_by(name: 'SVSE').id)
+    end
+
     private
 
     def dachverband_mailing_list(key)
@@ -191,16 +201,6 @@ class DataMigrator
       MailingList.find_or_create_by(name: name,
                                     group_id: group.layer_group.id,
                                     subscribable: true)
-    end
-
-    def section_from_row(row)
-      section_name = ['COMMON', 'SVSE Verband (Mandant)'].include?(row[:section_name]) ?
-        row[:common_section_name] : row[:section_name]
-      section_name ||= row[:section_name]
-
-      Group.find_or_create_by(name: section_name.delete_suffix('(Mandant)').strip,
-                              type: 'Group::Sektion',
-                              parent_id: Group.find_by(name: 'SVSE').id)
     end
 
     def sportart_from_row(row)
