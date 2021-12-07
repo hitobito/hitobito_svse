@@ -46,10 +46,20 @@ namespace :import do
       mobile_phone_number = person_hash.delete(:mobile_phone_number)
       main_phone_number = person_hash.delete(:main_phone_number)
 
+      existing_person = DataMigrator.person_from_row(person_hash)
+
+      if existing_person.present?
+        person_hash[:id] = existing_person.id
+        existing_created_at_older = existing_person.created_at < person_hash[:created_at]
+        person_hash[:created_at] = existing_person.created_at if existing_created_at_older
+        person_hash[:email] = existing_person.email
+      end
+
       common_section_name = person_hash.delete(:common_section_name)
 
-      person_hash[:id] = DataMigrator.person_from_row(person_hash)&.id
-
+      primary_group = DataMigrator.section_from_row({ section_name: common_section_name })
+      person_hash[:primary_group_id] = primary_group.id
+      
       Person.upsert(person_hash.to_h)
 
       person = DataMigrator.person_from_row(person_hash)
@@ -71,14 +81,16 @@ namespace :import do
 
       phone_numbers_exist = PhoneNumber.exists?(contactable_type: 'Person',
                                                 contactable_id: person.id)
+
       common_membership_attrs = DataMigrator.role_attrs_for_common_membership(person,
                                                                               common_section_name)
-      common_membership_attrs.merge!({
+
+      role_attrs = common_membership_attrs.merge({
         created_at: Time.zone.now,
         updated_at: Time.zone.now
       })
 
-      Role.upsert(common_membership_attrs) if !Role.exists?(common_membership_attrs) && is_member
+      Role.upsert(role_attrs) if !Role.exists?(common_membership_attrs) && is_member
 
       PhoneNumber.upsert_all(phone_attrs) unless phone_attrs.empty? || phone_numbers_exist
 
