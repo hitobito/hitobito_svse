@@ -42,6 +42,10 @@ de:
         one: Ehrenmitglieder
         other: Ehrenmitglieder
 
+      group/freimitglieder:
+        one: Freimitglieder
+        other: Freimitglieder
+
       group/anlass:
         one: Anlass
         other: Anlässe
@@ -85,6 +89,10 @@ de:
         one: Mitglied
         description: Ehrenmitglied
 
+      group/freimitglieder/mitglied:
+        one: Mitglied
+        description: Freimitglied
+
       group/externe_kontakte/kontakt:
         one: Kontakt
         description: Externer Kontakt / Sponsor
@@ -102,9 +110,6 @@ de:
       group/sektion/mutationsfuehrer:
         one: Mutationsführer
         description: Mutationsführer
-      group/sektion/freimitglied:
-        one: Freimitglied
-        description: Freimitglied
       group/sektion/passivmitglieder:
         one: Passivmitglieder
         description: Passivmitglieder

@@ -14,6 +14,7 @@ class Group::Sektion < ::Group
            Group::Sportart,
            Group::Anlass,
            Group::Ehemalige,
+           Group::Freimitglieder,
            Group::Passivmitglieder,
            Group::Ehrenmitglieder,
            Group::ExterneKontakte,
@@ -37,7 +38,6 @@ class Group::Sektion < ::Group
     self.permissions = [:group_read]
   end
 
-  class Freimitglied < ::Role; end
   class Mitglied < ::Role; end
   class Sponsor < ::Role; end
 
@@ -46,7 +46,6 @@ class Group::Sektion < ::Group
         Kassier,
         Mitglied,
         LoginLernende,
-        Freimitglied,
         Junior,
         Sponsor
 

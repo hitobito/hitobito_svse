@@ -42,6 +42,10 @@ fr:
         one: Membres d'honneur
         other: Membres d'honneur
 
+      group/freimitglieder:
+        one: Membres libre
+        description: Membres libre
+
       group/anlass:
         one: Evénements
         other: Evénements
@@ -85,6 +89,10 @@ fr:
         one: Membre
         description: Membre d'honneur
 
+      group/freimitglieder/mitglied:
+        one: Membre
+        description: Membre libre
+
       group/externe_kontakte/kontakt:
         one: contact
         description: contact externe / sponsor
@@ -102,9 +110,6 @@ fr:
       group/sektion/mutationsfuehrer:
         one: resp. des mutations
         description: resp. des mutations
-      group/sektion/freimitglied:
-        one: Membre libre
-        description: Membre libre
       group/sektion/passivmitglieder:
         one: Membres passif
         description: Membres passif
