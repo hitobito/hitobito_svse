@@ -18,6 +18,9 @@ class Group::Anlass < ::Group
     self.permissions = [:group_full]
   end
 
+  class Teilnehmer < ::Role; end
+
   roles Kassier,
-        Organisationsmitglied
+        Organisationsmitglied,
+        Teilnehmer
 end

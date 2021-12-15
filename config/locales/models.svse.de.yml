@@ -134,6 +134,9 @@ de:
       group/anlass/organisationsmitglied:
         one: Organisationsmitglied
         description: Organisationsmitglied
+      group/anlass/teilnehmer:
+        one: Teilnehmer
+        description: Teilnehmer
 
       group/vorstand/mitglied:
         one: Mitglied

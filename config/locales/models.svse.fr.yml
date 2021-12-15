@@ -134,6 +134,9 @@ fr:
       group/anlass/organisationsmitglied:
         one: Membre organisateur
         description: Membre organisateur
+      group/anlass/teilnehmer:
+        one: Participants
+        description: Participants
 
       group/vorstand/mitglied:
         one: Membre
