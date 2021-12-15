@@ -4,78 +4,178 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 
-de:
+fr:
   activerecord:
     models:
 
       ### GROUPS
 
       group/svse:
-        one: SVSE
-        other: Hauptgruppen
+        one: ''
+        other: ''
+
+      group/geschaeftsleitung:
+        one: Comité directeur
+        description: Comité directeur
 
       group/sektion:
-        one: Sektion
-        other: Sektionen
+        one: Sections
+        other: Sections
 
       group/ressort_mitarbeitende:
-        one: Ressortmitarbeitende
-        other: Ressortmitarbeitende
+        one: Collaborateurs ressort
+        other: Collaborateurs ressort
 
       group/technische_komission:
-        one: Technische Komission
-        other: Technische Komissionen
+        one: commission technique
+        other: commission technique
 
       group/externe_kontakte:
-        one: Externe Kontakte
-        other: Externe Kontakte
+        one: contacts externe
+        other: contact externe
 
       group/sportart:
-        one: Sportart
-        other: Sportarten
+        one: sport
+        other: sport
 
       group/ehrenmitglieder:
-        one: Ehrenmitglieder
-        other: Ehrenmitglieder
+        one: Membres d'honneur
+        other: Membres d'honneur
+
+      group/anlass:
+        one: Evénements
+        other: Evénements
+
+      group/ehemalige:
+        one: Anciens membres
+        description: Anciens membres
+
+      group/funktionaere:
+        one: Anciens membres
+        description: Fonctionnaires
+
+      group/passivmitglieder:
+        one: Membres passifs
+        description: Membres passifs
+
+      group/vorstand:
+        one: Comité directeur
+        description: Comité directeur
 
       ### ROLES
 
-      group/svse/geschaeftsleitung:
-        one: Geschäftsleitung
-        description: Geschäftsleitung
       group/svse/kassier:
-        one: Kassier
-        description: Kassier
+        one: Caissier
+        description: Caissier
+      group/svse/mutationsfuehrer:
+        one: Resp. des mutations
+        description: Resp. des mutations
+      group/svse/it_support:
+        one: Soutien informatique
+        description: Soutien informatique
+      group/svse/sponsor:
+        one: Sponsors
+        description: Sponsors
+
       group/technische_komission/mitglied:
-        one: Mitglied
-        description: Mitglied der TK
+        one: Membre
+        description: Membre commission technique
+
       group/ehrenmitglieder/mitglied:
-        one: Mitglied
-        description: Ehrenmitglied
+        one: Membre
+        description: Membre d'honneur
+
       group/externe_kontakte/kontakt:
-        one: Kontakt
-        description: Externer Kontakt / Sponsor
+        one: contact
+        description: contact externe / sponsor
+
       group/ressort_mitarbeitende/mitglied:
-        one: Mitglied
-        description: Mitglied Ressortmitarbeitende
+        one: Membre
+        description: Membre ressort
+
       group/sektion/mitglied:
-        one: Mitglied
-        description: Mitglied
-      group/sektion/read_only:
-        one: Read Only
-        description: Read Only
+        one: Membre
+        description: Membre
       group/sektion/kassier:
-        one: Kassier
-        description: Kassier
+        one: caissier
+        description: caissier
       group/sektion/mutationsfuehrer:
-        one: Mutationsführer
-        description: Mutationsführer
-      group/sektion/ehrenmitglied:
-        one: Ehrenmitglied
-        description: Ehrenmitglied
+        one: resp. des mutations
+        description: resp. des mutations
+      group/sektion/freimitglied:
+        one: Membre libre
+        description: Membre libre
+      group/sektion/passivmitglieder:
+        one: Membres passif
+        description: Membres passif
+      group/sektion/junior:
+        one: Cadet
+        description: Cadet
+      group/sektion/praesident:
+        one: Président
+        description: Président
+      group/sektion/sponsor:
+        one: Sponsor
+        description: Sponsor
+      group/sektion/login_lernende:
+        one: Apprenti LOGIN
+        description: Apprenti LOGIN
+
       group/sportart/ombuds_person:
-        one: Obfrau/-Mann
-        description: Obfrau/-Mann
+        one: Responsable sport
+        description: Responsable sport
       group/sportart/mitglied:
-        one: Mitglied
-        description: Mitglied
+        one: Membre
+        description: Membre
+
+      group/anlass/kassier:
+        one: caissier
+        description: caissier
+      group/anlass/organisationsmitglied:
+        one: Membre organisateur
+        description: Membre organisateur
+
+      group/vorstand/mitglied:
+        one: Membre
+        description: Membre
+
+      group/ehemalige/mitglied:
+        one: Membre
+        description: Membre
+
+      group/geschaeftsleitung/mitglied:
+        one: Membre
+        description: Membre
+      group/geschaeftsleitung/kassier:
+        one: caissier
+        description: caissier
+
+      group/funktionaere/mitglied:
+        one: Membre
+        description: Membre
+
+      group/passivmitglieder/mitglied:
+        one: Membre
+        description: Membre
+
+    attributes:
+      person:
+        created_at: Date d'entrée
+        died_at: Décédé le
+        iban: IBAN
+        occupation: Profession
+        nickname: Fonction
+        recruited_at: Recruté le
+        recruited_by: Recruté par
+        recruited_by_id: Recruté par
+        states:
+          active: activ
+          passive: passif
+          resigned: Démissionné
+          deceased: Décédée
+        state: status
+        state_label: status
+        title: title
+
+  attributes:
+    created_info: Décédée
