@@ -88,6 +88,7 @@ class DataMigrator
 
       sportart = sportart_from_row(row)
 
+      freimitglieder = freimitglieder_from_row(row)
 
       section_type_prefix = 'Group::Sektion::'
 
@@ -99,7 +100,7 @@ class DataMigrator
           { group_id: section.id, type: "#{section_type_prefix}Mutationsfuehrer" },
         ],
         Freimitglied: [
-          { group_id: section.id, type: "#{section_type_prefix}Freimitglied" },
+          { group_id: freimitglieder.id, type: "Group::Freimitglieder::Mitglied" },
         ],
         JuniorIn: [
           { group_id: section.id, type: "#{section_type_prefix}Junior" },
@@ -211,6 +212,16 @@ class DataMigrator
       Group.find_or_create_by(name: remove_lov_prefix(row[:sportart]),
                               parent_id: section.id,
                               type: 'Group::Sportart')
+    end
+
+    def freimitglieder_from_row(row)
+      section = section_from_row(row)
+
+      return unless section
+
+      Group.find_or_create_by(name: 'Freimitglieder',
+                              parent_id: section.id,
+                              type: 'Group::Freimitglieder')
     end
 
     def is_number?(value)
