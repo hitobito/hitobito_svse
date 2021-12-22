@@ -185,5 +185,8 @@ fr:
         state_label: status
         title: title
 
+      event:
+        motto: Sports
+
   attributes:
     created_info: Décédée

@@ -185,5 +185,8 @@ de:
         state_label: Status
         title: Titel
 
+      event:
+        motto: Sportart
+
   attributes:
     created_info: Eintrittsdatum
