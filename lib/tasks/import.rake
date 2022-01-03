@@ -204,9 +204,6 @@ namespace :import do
 
       next if attrs.empty?
 
-      attrs[:created_at] = Time.zone.now
-      attrs[:updated_at] = attrs[:created_at]
-
       Subscription.upsert_all(attrs)
     end
 
