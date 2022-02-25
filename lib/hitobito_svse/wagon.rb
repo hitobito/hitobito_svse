@@ -21,6 +21,9 @@ module HitobitoSvse
     ]
 
     config.to_prepare do
+      ### ability
+      InvoiceAbility.include Svse::InvoiceAbility
+
       ### models
       Group.include Svse::Group
       Person.include Svse::Person

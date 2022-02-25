@@ -19,6 +19,13 @@ mutationsfuehrer:
   contact_data_visible: true
   primary_group: esv_luzern
 
+kassier:
+  first_name: Dagobert
+  last_name: Mats
+  email: dagobert@svse.example.com
+  contact_data_visible: true
+  primary_group: svse
+
 biker:
   first_name: Danny
   last_name: MacAskill
