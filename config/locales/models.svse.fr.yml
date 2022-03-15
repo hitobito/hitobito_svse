@@ -43,8 +43,8 @@ fr:
         other: Membres d'honneur
 
       group/freimitglieder:
-        one: Membres libre
-        description: Membres libre
+        one: ''
+        other: ''
 
       group/anlass:
         one: Evénements
@@ -90,8 +90,8 @@ fr:
         description: Membre d'honneur
 
       group/freimitglieder/mitglied:
-        one: Membre
-        description: Membre libre
+        one: ""
+        description: ""
 
       group/externe_kontakte/kontakt:
         one: contact
@@ -140,8 +140,8 @@ fr:
         one: Membre organisateur
         description: Membre organisateur
       group/anlass/teilnehmer:
-        one: Participants
-        description: Participants
+        one: ""
+        description: ""
 
       group/vorstand/mitglied:
         one: Membre
@@ -186,7 +186,7 @@ fr:
         title: title
 
       event:
-        motto: Sports
+        motto: ""
 
   attributes:
     created_info: Décédée
