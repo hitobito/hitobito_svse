@@ -9,6 +9,11 @@ geschaeftsleitung:
   group: geschaeftsleitung
   type: Group::Geschaeftsleitung::Mitglied
 
+kassier:
+  person: kassier
+  group: geschaeftsleitung
+  type: Group::Geschaeftsleitung::Kassier
+
 mutationsfuehrer:
   person: mutationsfuehrer
   group: esv_luzern
