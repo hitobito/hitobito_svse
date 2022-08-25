@@ -32,7 +32,8 @@ module HitobitoSvse
                                            :recruited_at, :died_at, :state]
 
       ### domain classes
-      TableDisplay::People.prepend Svse::TableDisplay::People
+      TableDisplay.register_column(Person, TableDisplays::PublicColumn, [:created_at])
+
       Export::Tabular::People::PeopleFull.prepend Svse::Export::Tabular::People::PeopleFull
       Export::Tabular::People::PersonRow.include Svse::Export::Tabular::People::PersonRow
     end
