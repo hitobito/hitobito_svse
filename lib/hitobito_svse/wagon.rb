@@ -24,7 +24,6 @@ module HitobitoSvse
       ### models
       Group.include Svse::Group
       Person.include Svse::Person
-      TableDisplay.prepend Svse::TableDisplay
       Event::Course.used_attributes -= [:kind_id]
 
       ### controllers
