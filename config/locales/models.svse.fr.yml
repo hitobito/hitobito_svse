@@ -12,6 +12,7 @@ fr:
 
       group/svse:
         one: ''
+        many: ''
         other: ''
 
       group/geschaeftsleitung:
@@ -20,34 +21,42 @@ fr:
 
       group/sektion:
         one: Sections
+        many: Sections
         other: Sections
 
       group/ressort_mitarbeitende:
         one: Collaborateurs ressort
+        many: Collaborateurs ressort
         other: Collaborateurs ressort
 
       group/technische_komission:
         one: commission technique
+        many: commission technique
         other: commission technique
 
       group/externe_kontakte:
         one: contacts externe
+        many: contact externe
         other: contact externe
 
       group/sportart:
         one: sport
+        many: sport
         other: sport
 
       group/ehrenmitglieder:
         one: Membres d'honneur
+        many: Membres d'honneur
         other: Membres d'honneur
 
       group/freimitglieder:
         one: ''
+        many: ''
         other: ''
 
       group/anlass:
         one: Evénements
+        many: Evénements
         other: Evénements
 
       group/ehemalige:
