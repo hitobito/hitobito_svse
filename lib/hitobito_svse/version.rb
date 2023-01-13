@@ -7,5 +7,5 @@
 
 
 module HitobitoSvse
-  VERSION = '1.28.39'
+  VERSION = '1.28.40'
 end
