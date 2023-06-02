@@ -17,9 +17,6 @@
     %aside.span5
       = render 'events/attrs_contact'
 
-      - if entry.participant_types.present?
-        = render 'events/attrs_application'
-
       = render_extensions 'show_right'
 
   %h1
@@ -35,4 +32,3 @@
     %article.span6
       %h3= t('event.register.index.no_login')
       = render 'event/register/email_check'
-
