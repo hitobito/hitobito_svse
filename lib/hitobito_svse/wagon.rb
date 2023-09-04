@@ -35,6 +35,8 @@ module HitobitoSvse
 
       Export::Tabular::People::PeopleFull.prepend Svse::Export::Tabular::People::PeopleFull
       Export::Tabular::People::PersonRow.include Svse::Export::Tabular::People::PersonRow
+
+      PublicEventsController.render_application_attrs = false
     end
 
     initializer 'svse.add_settings' do |_app|
