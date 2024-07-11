@@ -6,18 +6,17 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Svse < ::Group
-
   self.layer = true
   self.event_types = [Event, Event::Course]
 
   children Group::Geschaeftsleitung,
-           Group::RessortMitarbeitende,
-           Group::TechnischeKomission,
-           Group::Ehrenmitglieder,
-           Group::Ehemalige,
-           Group::ExterneKontakte,
-           Group::Passivmitglieder,
-           Group::Sektion
+    Group::RessortMitarbeitende,
+    Group::TechnischeKomission,
+    Group::Ehrenmitglieder,
+    Group::Ehemalige,
+    Group::ExterneKontakte,
+    Group::Passivmitglieder,
+    Group::Sektion
 
   class Mutationsfuehrer < ::Role
     self.permissions = [:layer_and_below_full]
@@ -30,7 +29,6 @@ class Group::Svse < ::Group
   class Sponsor < ::Role; end
 
   roles Mutationsfuehrer,
-        ItSupport,
-        Sponsor
-
+    ItSupport,
+    Sponsor
 end

@@ -6,11 +6,9 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Ehrenmitglieder < ::Group
-
   ### ROLES
 
   class Mitglied < ::Role; end
 
   roles Mitglied
-
 end

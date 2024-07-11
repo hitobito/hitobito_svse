@@ -6,19 +6,18 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Sektion < ::Group
-
   self.layer = true
   self.event_types = [Event, Event::Course]
 
   children Group::Vorstand,
-           Group::Sportart,
-           Group::Anlass,
-           Group::Ehemalige,
-           Group::Freimitglieder,
-           Group::Passivmitglieder,
-           Group::Ehrenmitglieder,
-           Group::ExterneKontakte,
-           Group::Funktionaere
+    Group::Sportart,
+    Group::Anlass,
+    Group::Ehemalige,
+    Group::Freimitglieder,
+    Group::Passivmitglieder,
+    Group::Ehrenmitglieder,
+    Group::ExterneKontakte,
+    Group::Funktionaere
 
   ### ROLES
 
@@ -39,14 +38,13 @@ class Group::Sektion < ::Group
   end
 
   class Mitglied < ::Role; end
+
   class Sponsor < ::Role; end
 
-
   roles Mutationsfuehrer,
-        Kassier,
-        Mitglied,
-        LoginLernende,
-        Junior,
-        Sponsor
-
+    Kassier,
+    Mitglied,
+    LoginLernende,
+    Junior,
+    Sponsor
 end

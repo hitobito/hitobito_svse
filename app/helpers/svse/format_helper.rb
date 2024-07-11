@@ -4,7 +4,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 module Svse::FormatHelper
-
   def format_person_created_at(person)
     f(person.created_at.to_date)
   end

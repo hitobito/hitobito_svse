@@ -6,11 +6,9 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::ExterneKontakte < ::Group
-
   ### ROLES
 
   class Kontakt < ::Role; end
 
   roles Kontakt
-
 end

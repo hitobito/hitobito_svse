@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::TechnischeKomission < ::Group
-
   ### ROLES
 
   class Mitglied < ::Role
@@ -14,5 +13,4 @@ class Group::TechnischeKomission < ::Group
   end
 
   roles Mitglied
-
 end

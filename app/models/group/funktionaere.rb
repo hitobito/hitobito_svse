@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Funktionaere < ::Group
-
   class Mitglied < ::Role
     self.permissions = [:layer_full]
   end

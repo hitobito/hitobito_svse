@@ -6,9 +6,7 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Ehemalige < ::Group
-
   class Mitglied < ::Role; end
 
   roles Mitglied
-
 end

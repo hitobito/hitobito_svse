@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Sportart < ::Group
-
   ### ROLES
 
   class OmbudsPerson < ::Role
@@ -16,6 +15,5 @@ class Group::Sportart < ::Group
   class Mitglied < ::Role; end
 
   roles OmbudsPerson,
-        Mitglied
-
+    Mitglied
 end

@@ -15,10 +15,10 @@ class DataExtraction
     @database = database
   end
 
-  def query(table = nil, field_sql = '*', condition_sql = '')
-    raise ArgumentError, 'Table needs to be passed' if @query.nil? && table.nil?
+  def query(table = nil, field_sql = "*", condition_sql = "")
+    raise ArgumentError, "Table needs to be passed" if @query.nil? && table.nil?
 
-    @query = <<~SQL.split("\n").map(&:strip).join(' ').gsub(/\s+/, ' ')
+    @query = <<~SQL.split("\n").map(&:strip).join(" ").gsub(/\s+/, " ")
       COPY (
         SELECT #{field_sql}
         FROM #{table}
@@ -42,7 +42,7 @@ class DataExtraction
       raise "No Query set, please use #{self.class.name}#query(table, fields, joins) to set one"
     end
 
-    `psql -h #{ENV['PGHOSTNAME']} -U #{ENV['PGUSERNAME']} -c \"#{@query}\" #{database}`
+    `psql -h #{ENV["PGHOSTNAME"]} -U #{ENV["PGUSERNAME"]} -c \"#{@query}\" #{database}`
   end
 
   def write_file(data)

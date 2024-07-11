@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Anlass < ::Group
-
   self.layer = true
   self.event_types = [Event, Event::Course]
 
@@ -21,6 +20,6 @@ class Group::Anlass < ::Group
   class Teilnehmer < ::Role; end
 
   roles Kassier,
-        Organisationsmitglied,
-        Teilnehmer
+    Organisationsmitglied,
+    Teilnehmer
 end

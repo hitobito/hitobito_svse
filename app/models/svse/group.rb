@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_svse.
 
-
 module Svse::Group
   extend ActiveSupport::Concern
 
@@ -16,5 +15,4 @@ module Svse::Group
 
     root_types Group::Svse
   end
-
 end

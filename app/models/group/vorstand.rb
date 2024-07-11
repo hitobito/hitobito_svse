@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 class Group::Vorstand < ::Group
-
   class Mitglied < ::Role
     self.permissions = [:layer_and_below_full, :contact_data]
   end

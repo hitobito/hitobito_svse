@@ -1,36 +1,36 @@
 # frozen_string_literal: true
 
-require_relative '../../app/domain/data_extraction'
+require_relative "../../app/domain/data_extraction"
 
 # rubocop:disable Metrics/BlockLength,Rails/RakeEnvironment
 namespace :migration do
   task :clean do
-    rm_f 'db/seeds/production/people.csv'
-    rm_f 'db/seeds/production/companies.csv'
-    rm_f 'db/seeds/production/sport_memberships.csv'
-    rm_f 'db/seeds/production/functions.csv'
-    rm_f 'db/seeds/production/subscriptions.csv'
+    rm_f "db/seeds/production/people.csv"
+    rm_f "db/seeds/production/companies.csv"
+    rm_f "db/seeds/production/sport_memberships.csv"
+    rm_f "db/seeds/production/functions.csv"
+    rm_f "db/seeds/production/subscriptions.csv"
   end
 
   task extract: [
-    'db/seeds/production/people.csv',
-    'db/seeds/production/companies.csv',
-    'db/seeds/production/sport_memberships.csv',
-    'db/seeds/production/functions.csv',
-    'db/seeds/production/subscriptions.csv'
+    "db/seeds/production/people.csv",
+    "db/seeds/production/companies.csv",
+    "db/seeds/production/sport_memberships.csv",
+    "db/seeds/production/functions.csv",
+    "db/seeds/production/subscriptions.csv"
   ]
 
   task prepare_seed: [:extract] do
-    cp 'db/seeds/production/0_people.rb', 'db/seeds/0_people.rb'
+    cp "db/seeds/production/0_people.rb", "db/seeds/0_people.rb"
   end
 end
 
-directory 'db/seeds/production'
+directory "db/seeds/production"
 
-file('db/seeds/production/people.csv').clear
-file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
-  migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_contact', <<~SQL, <<~CONDITIONS)
+file("db/seeds/production/people.csv").clear
+file "db/seeds/production/people.csv" => "db/seeds/production" do |task|
+  migrator = DataExtraction.new(task.name, "postgres")
+  migrator.query("biz_contact", <<~SQL, <<~CONDITIONS)
     biz_contact.firstname as first_name,
     biz_contact.lastname as last_name,
     biz_contact.email as email,
@@ -74,10 +74,10 @@ file 'db/seeds/production/people.csv' => 'db/seeds/production' do |task|
   migrator.dump
 end
 
-file('db/seeds/production/companies.csv').clear
-file 'db/seeds/production/companies.csv' => 'db/seeds/production' do |task|
-  migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_company', <<~SQL, <<~CONDITIONS)
+file("db/seeds/production/companies.csv").clear
+file "db/seeds/production/companies.csv" => "db/seeds/production" do |task|
+  migrator = DataExtraction.new(task.name, "postgres")
+  migrator.query("biz_company", <<~SQL, <<~CONDITIONS)
     biz_company.name as company_name,
     biz_company.email as email,
     biz_address.addressline1 AS address,
@@ -93,10 +93,10 @@ file 'db/seeds/production/companies.csv' => 'db/seeds/production' do |task|
   migrator.dump
 end
 
-file('db/seeds/production/sport_memberships.csv').clear
-file 'db/seeds/production/sport_memberships.csv' => 'db/seeds/production' do |task|
-  migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_contact_sport', <<~SQL, <<~CONDITIONS)
+file("db/seeds/production/sport_memberships.csv").clear
+file "db/seeds/production/sport_memberships.csv" => "db/seeds/production" do |task|
+  migrator = DataExtraction.new(task.name, "postgres")
+  migrator.query("biz_contact_sport", <<~SQL, <<~CONDITIONS)
     biz_contact.firstname AS first_name,
     biz_contact.lastname AS last_name,
     biz_address.addressline1 AS address,
@@ -115,10 +115,10 @@ file 'db/seeds/production/sport_memberships.csv' => 'db/seeds/production' do |ta
   migrator.dump
 end
 
-file('db/seeds/production/functions.csv').clear
-file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
-  migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_contact_function', <<~SQL, <<~CONDITIONS)
+file("db/seeds/production/functions.csv").clear
+file "db/seeds/production/functions.csv" => "db/seeds/production" do |task|
+  migrator = DataExtraction.new(task.name, "postgres")
+  migrator.query("biz_contact_function", <<~SQL, <<~CONDITIONS)
     biz_contact.firstname AS first_name,
     biz_contact.lastname AS last_name,
     biz_address.addressline1 AS address,
@@ -139,10 +139,10 @@ file 'db/seeds/production/functions.csv' => 'db/seeds/production' do |task|
   migrator.dump
 end
 
-file('db/seeds/production/subscriptions.csv').clear
-file 'db/seeds/production/subscriptions.csv' => 'db/seeds/production' do |task|
-  migrator = DataExtraction.new(task.name, 'postgres')
-  migrator.query('biz_contact', <<-SQL.strip_heredoc, <<-CONDITIONS.strip_heredoc)
+file("db/seeds/production/subscriptions.csv").clear
+file "db/seeds/production/subscriptions.csv" => "db/seeds/production" do |task|
+  migrator = DataExtraction.new(task.name, "postgres")
+  migrator.query("biz_contact", <<~SQL, <<~CONDITIONS)
     biz_contact.firstname as first_name,
     biz_contact.lastname as last_name,
     biz_address.addressline1 AS address,
