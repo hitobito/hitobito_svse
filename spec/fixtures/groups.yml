@@ -11,7 +11,8 @@ svse:
   name: SVSE
   type: Group::Svse
   email: svse@svse.example.com
-  address: Ophovener Str. 79a
+  street: Ophovener Str.
+  housenumber: 79a
   zip_code: 2843
   town: Neu Carlscheid
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -23,7 +24,8 @@ technische_komission:
   name: Technische Komission
   type: Group::TechnischeKomission
   email: tk@svse.example.com
-  address: Teslastrasse 44
+  street: Teslastrasse
+  housenumber: 44
   zip_code: 8000
   town: Züri
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -35,7 +37,8 @@ geschaeftsleitung:
   name: Geschäftsleitung
   type: Group::Geschaeftsleitung
   email: geschaeftsleitung@svse.example.com
-  address: Langstrasse 21
+  street: Langstrasse
+  housenumber: 21
   zip_code: 4242
   town: Umberg
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -47,7 +50,8 @@ ehrenmitglieder:
   name: Ehrenmitglieder
   type: Group::Ehrenmitglieder
   email: ehrenmitglieder@svse.example.com
-  address: Schellingstr. 8
+  street: Schellingstr
+  housenumber: . 8
   zip_code: 4242
   town: Domianburg
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -59,7 +63,8 @@ esv_luzern:
   name: ESV Luzern
   type: Group::Sektion
   email: lu@svse.example.com
-  address: Kappelbrücke 42
+  street: Kappelbrücke 
+  housenumber: 42
   zip_code: 6000
   town: Luzern
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_luzern) %>
@@ -89,7 +94,8 @@ externe_kontakte:
   name: Externe Kontakte
   type: Group::ExterneKontakte
   email: extern@svse.example.com
-  address: Hauptstrasse 42
+  street: Hauptstrasse
+  housenumber: 42
   zip_code: 2000
   town: Entenhausen
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -101,7 +107,8 @@ ressort_mitarbeitende:
   name: Ressortmitarbeitende
   type: Group::RessortMitarbeitende
   email: ressort@svse.example.com
-  address: Bergstrasse 4677
+  street: Bergstrasse
+  housenumber: 4677
   zip_code: 7993
   town: Davos Platz
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:svse) %>
@@ -113,7 +120,8 @@ esv_olten:
   name: ESV Olten
   type: Group::Sektion
   email: olten@svse.example.com
-  address: Hauensteinstrasse 442
+  street: Hauensteinstrasse
+  housenumber: 442
   zip_code: 4111
   town: Oltenhausen
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:esv_olten) %>
