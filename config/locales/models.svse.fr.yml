@@ -1,82 +1,49 @@
-#  Copyright (c) 2021, Schweizerischer Sportverband öffentlicher Verkehr. This file is part of
-#  hitobito_svse and licensed under the Affero General Public License version 3
-#  or later. See the COPYING file at the top-level directory or at
-#  https://github.com/hitobito/hitobito_svse.
-
-
 fr:
   activerecord:
     models:
-
-      ### GROUPS
-
-      group/svse:
-        one: ''
-        many: ''
-        other: ''
-
       group/geschaeftsleitung:
         one: Comité directeur
         description: Comité directeur
-
       group/sektion:
         one: Sections
         many: Sections
         other: Sections
-
       group/ressort_mitarbeitende:
         one: Collaborateurs ressort
         many: Collaborateurs ressort
         other: Collaborateurs ressort
-
       group/technische_komission:
         one: commission technique
         many: commission technique
         other: commission technique
-
       group/externe_kontakte:
         one: contacts externe
         many: contact externe
         other: contact externe
-
       group/sportart:
         one: sport
         many: sport
         other: sport
-
       group/ehrenmitglieder:
         one: Membres d'honneur
         many: Membres d'honneur
         other: Membres d'honneur
-
-      group/freimitglieder:
-        one: ''
-        many: ''
-        other: ''
-
       group/anlass:
         one: Evénements
         many: Evénements
         other: Evénements
-
       group/ehemalige:
         one: Anciens membres
         description: Anciens membres
-
       group/funktionaere:
         one: Anciens membres
         description: Fonctionnaires
-
       group/passivmitglieder:
         one: Membres passifs
         description: Membres passifs
-
       group/vorstand:
         one: Comité directeur
         description: Comité directeur
-
-      ### ROLES
-
       group/svse/kassier:
         one: Caissier
         description: Caissier
@@ -89,27 +56,18 @@ fr:
       group/svse/sponsor:
         one: Sponsors
         description: Sponsors
-
       group/technische_komission/mitglied:
         one: Membre
         description: Membre commission technique
-
       group/ehrenmitglieder/mitglied:
         one: Membre
         description: Membre d'honneur
-
-      group/freimitglieder/mitglied:
-        one: ""
-        description: ""
-
       group/externe_kontakte/kontakt:
         one: contact
         description: contact externe / sponsor
-
       group/ressort_mitarbeitende/mitglied:
         one: Membre
         description: Membre ressort
-
       group/sektion/mitglied:
         one: Membre
         description: Membre
@@ -134,47 +92,36 @@ fr:
       group/sektion/login_lernende:
         one: Apprenti LOGIN
         description: Apprenti LOGIN
-
       group/sportart/ombuds_person:
         one: Responsable sport
         description: Responsable sport
       group/sportart/mitglied:
         one: Membre
         description: Membre
-
       group/anlass/kassier:
         one: caissier
         description: caissier
       group/anlass/organisationsmitglied:
         one: Membre organisateur
         description: Membre organisateur
-      group/anlass/teilnehmer:
-        one: ""
-        description: ""
-
       group/vorstand/mitglied:
         one: Membre
         description: Membre
-
       group/ehemalige/mitglied:
         one: Membre
         description: Membre
-
       group/geschaeftsleitung/mitglied:
         one: Membre
         description: Membre
       group/geschaeftsleitung/kassier:
         one: caissier
         description: caissier
-
       group/funktionaere/mitglied:
         one: Membre
         description: Membre
-
       group/passivmitglieder/mitglied:
         one: Membre
         description: Membre
-
     attributes:
       person:
         created_at: Date d'entrée
@@ -193,9 +140,5 @@ fr:
         state: status
         state_label: status
         title: title
-
-      event:
-        motto: ""
-
   attributes:
     created_info: Date d'entrée
