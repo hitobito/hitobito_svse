@@ -11,9 +11,8 @@ fr:
       ### GROUPS
 
       group/svse:
-        one: ''
-        many: ''
-        other: ''
+        one: SVSE
+        other: Hauptgruppen
 
       group/geschaeftsleitung:
         one: Comité directeur
@@ -50,9 +49,8 @@ fr:
         other: Membres d'honneur
 
       group/freimitglieder:
-        one: ''
-        many: ''
-        other: ''
+        one: Freimitglieder
+        other: Freimitglieder
 
       group/anlass:
         one: Evénements
@@ -99,8 +97,8 @@ fr:
         description: Membre d'honneur
 
       group/freimitglieder/mitglied:
-        one: ""
-        description: ""
+        one: Mitglied
+        description: Freimitglied
 
       group/externe_kontakte/kontakt:
         one: contact
@@ -149,8 +147,8 @@ fr:
         one: Membre organisateur
         description: Membre organisateur
       group/anlass/teilnehmer:
-        one: ""
-        description: ""
+        one: Teilnehmer
+        description: Teilnehmer
 
       group/vorstand/mitglied:
         one: Membre
@@ -195,7 +193,7 @@ fr:
         title: title
 
       event:
-        motto: ""
+        motto: Sportart
 
   attributes:
     created_info: Date d'entrée
