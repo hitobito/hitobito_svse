@@ -6,5 +6,5 @@
 #  https://github.com/hitobito/hitobito_svse.
 
 module HitobitoSvse
-  VERSION = "2.9.15"
+  VERSION = "2.10.0"
 end
