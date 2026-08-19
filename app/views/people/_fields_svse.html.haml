@@ -16,6 +16,5 @@
                                   Person::STATES.map {|state| [state, Person.state_labels[state.to_sym]]},
                                   :first,
                                   :last,
-                                  { prompt: true },
-                                  class: 'form-select form-select-sm')
+                                  { prompt: true })
   = f.labeled_input_fields(:died_at)
